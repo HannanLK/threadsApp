@@ -1,0 +1,61 @@
+
+nav{
+    font-family: 'Inknut Antiqua',sans-serif;
+    size: 18px;
+}
+
+.login{
+    font-family: 'Inknut Antiqua',sans-serif;
+}
+
+.underline-animation {
+    position: relative;
+    padding-left: 6px;
+    padding-right:6px ;
+}
+
+.underline-animation::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: rgb(239, 26, 26);
+    transition: width 0.4s ease;
+}
+
+.underline-animation:hover::after {
+    width: 100%;
+}
+
+.footer_head{
+    font-family: 'Poppins',sans-serif;
+    font-weight: 600;
+}
+
+.banner,.category{
+    font-family: 'Poppins',sans-serif;
+}
+
+.womenslider{
+    display: grid;
+}
+
+.selected {
+    border: 2px solid rgb(25, 0, 255);
+}
+
+.productedit{
+    display: flex;
+}
+
+
+canvas#mouse-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
