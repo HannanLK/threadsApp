@@ -1,46 +1,47 @@
 
 <x-app-layout>
-    
     <!-- Banner Section -->
     <section>
-        <div class="relative content-center h-max md:h-auto pt-[60px] md:pt-[80px]">
-            <!-- Banner Section -->
-            <div class="relative flex items-center justify-center bg-cover bg-center bg-no-repeat w-full h-screen md:h-[500px] pt-10" 
-                 style="background-image: url('{{ asset('assets/image/banner.webp') }}');" 
-                 data-aos="zoom-in">
-                 
-                <!-- Dark Overlay -->
-                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-
-                <!-- Floating Logo -->
-                <div class="absolute transform -translate-x-1/2 top-8 left-1/2">
-                    <img src="{{ asset('assets/image/logo_2.png') }}" class="w-[120px] h-auto md:w-[168px] opacity-25">
+    <!-- Sliding Banner Section -->
+    <header class="relative overflow-hidden w-full h-80 slider">
+        <div class="slides flex transition-transform duration-500 ease-in-out">
+            <!-- Slide 1 -->
+            <div class="min-w-full relative slide">
+                <img src="{{ asset('assets\image\banner\banner1.png') }}" alt="Banner 1" class="w-full h-full object-cover">
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
+                    <h2 class="text-5xl font-light text-white mb-6">Exclusive Men's Wear</h2>
+                    <a href="{{ route('shop.men') }}" class="bg-sky-900 text-white px-4 py-2 rounded-sm">Shop Mens</a>
                 </div>
-        
-                <!-- Banner Text -->
-                <div class="relative flex flex-col items-start justify-center pl-4 md:pl-16 text-left w-full max-w-[400px] md:max-w-none z-10">
-                    <p class="text-sm font-medium leading-tight text-white md:text-2xl animate-float" data-aos="fade-up" data-aos-delay="300">
-                        NEW TREND<br>
-                    </p>
-                    <p class="flex items-center text-2xl font-extrabold text-black md:text-7xl animate-float" data-aos="fade-up" data-aos-delay="500">
-                        COLLUSION
-                    </p>    
-                    <div class="mt-4 md:mt-8" data-aos="fade-up" data-aos-delay="500">
-                        <button class="inline-block px-4 py-2 text-sm font-semibold text-white transition transform rounded-md shadow-lg hover:bg-gray-700 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 md:px-6 md:py-3 md:text-lg bg-[#BFA86D]">
-                            SHOP NEW
-                        </button>
-                    </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="min-w-full relative slide">
+                <img src="{{ asset('assets\image\banner\banner2.png') }}" alt="Banner 2" class="w-full h-full object-cover">
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+                    <h2 class="text-5xl font-light mb-6 text-pink-800">Exclusive Women's Wear</h2>
+                    <a href="{{ route('shop.men') }}" class="bg-pink-500 text-white px-4 py-2 rounded-sm mb-2">Shop Women's</a>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="min-w-full relative slide">
+                <img src="{{ asset('assets\image\banner\banner3.png') }}" alt="Banner 3" class="w-full h-full object-cover">
+                <div class="absolute top-1/2 left-2/3 transform -translate-x-1/2 -translate-y-1/2">
+                    <h2 class="text-5xl font-light mb-6 text-white">Exclusive Accessories</h2>
+                    <a href="{{ route('shop.men') }}" class="bg-emerald-800 text-white px-4 py-2 rounded-sm">Shop Accessories</a>
                 </div>
             </div>
         </div>
-    </section>  
+        <div class="absolute inset-y-1/2 flex justify-between w-full items-center">
+            <button id="prev-slide" class="bg-black bg-opacity-50 text-white p-3 rounded-md">&lt;</button>
+            <button id="next-slide" class="bg-black bg-opacity-50 text-white p-3 rounded-md">&gt;</button>
+        </div>
+    </header>    
+</section>  
 
     
     <!-- Fashion New Trends Section -->
     <section class="pt-12 category">
         <div class="pb-8 text-center">
-            <span class="font-bold text-red-500">LATEST NEWS</span>
-            <h2 class="mt-2 text-3xl font-semibold">Fashion New Trends</h2>
+            <h2 class="mt-2 text-3xl font-semibold">New Arrivals</h2>
         </div>
         <div class="container grid grid-cols-2 gap-4 mx-auto mt-8 md:grid-cols-4">
             <div class="relative overflow-hidden hover-scale group" data-aos="flip-left">
@@ -78,7 +79,6 @@
     <!-- Products Section -->
     <section class="py-16 category">
         <div class="pb-8 text-center" data-aos="fade-up">
-            <span class="font-bold text-red-500">PRODUCTS</span>
             <h2 class="mt-2 text-3xl font-semibold">Our Best Picks for You</h2>
         </div>
         <div class="flex justify-center pb-3 mb-6 space-x-4 text-center gap-7">
@@ -244,34 +244,32 @@
 
             menTab.addEventListener('click', showMenSlider);
             womenTab.addEventListener('click', showWomenSlider);
+
+            // Slider Functionality
+            let currentIndex = 0;
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+
+            function showSlide(index) {
+                const offset = -index * 100;
+                document.querySelector('.slides').style.transform = `translateX(${offset}%)`;
+            }
+
+            document.getElementById('next-slide').addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                showSlide(currentIndex);
+            });
+
+            document.getElementById('prev-slide').addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                showSlide(currentIndex);
+            });
+
+            setInterval(function() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                showSlide(currentIndex);
+            }, 5000);
     </script>
-
-    <!-- About Us Section -->
-    <section class="category">
-        <div class="mb-12 text-center md:px-8 lg:px-16">
-            <span class="font-bold text-red-500">What Shop</span>
-            <h2 class="mt-1 text-3xl font-semibold">About Us</h2>
-        </div>
-
-        <div class="flex flex-col justify-between md:flex-row ">
-            <div class="italic leading-relaxed text-gray-700 md:w-1/2 md:pl-8 lg:pl-16">
-                <p>
-                    Sierra Fashion embarked on its journey in 1987 with a clear vision: to establish a distinguished
-                    local designer-wear fashion brand in Sri Lanka. Over the past 35 years, we've proudly emerged as
-                    leaders in the retail industry, renowned for our commitment to quality, durability, and sustainability.
-                </p>
-                <p class="mt-4">
-                    Our success stems from the dedication and talent of our in-house team, who meticulously design and
-                    manufacture all our materials and creations.
-                </p>
-                <p class="pt-24 mt-6 text-4xl italic font-semibold text-red-500 animate-pulse">#Sierra_Fashion</p>
-            </div>
-            <div class="flex justify-end mt-8 md:w-1/2 md:mt-0">
-                <img src="{{ asset('assets/image/about3.png') }}" alt="Fashion Image" class="h-[430px]">
-            </div>
-        </div>
-    </section>
-
 
     <!-- Partners Section -->
     <section class="pt-12 pb-6 category">

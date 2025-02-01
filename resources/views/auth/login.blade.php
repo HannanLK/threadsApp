@@ -5,13 +5,8 @@
     <section class="flex flex-col items-center justify-center pb-6 md:flex-row pt-28 shadow-amber-500 login-section">
         <div class="flex w-full max-w-4xl overflow-hidden bg-white rounded-lg shadow-lg">
             <!-- Left Section (Logo and Branding) - Hidden on Mobile -->
-            <div class="hidden w-full md:flex md:w-1/2 bg-[#b1975b] items-center justify-center p-4 font-serif">
-                <div class="bg-white rounded-md">
-                    <div class="px-16 py-24 text-center">
-                        <h1 class="pb-4 mb-4 text-3xl font-light text-black">SIERRA<br>FASHION</h1>
-                        <p class="text-lg text-black">Clothing & Fashion Store</p>
-                    </div>
-                </div>
+            <div class="hidden w-1/2 bg-gray-200 md:flex">
+                <img src="{{ asset('assets/image/banner/loginFiller.jpg') }}" alt="filler image" class="w-240px">
             </div>
 
             <!-- Right Section (Login Form) -->

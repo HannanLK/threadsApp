@@ -2,13 +2,9 @@
     <section class="flex flex-col items-center justify-center pb-6 md:flex-row pt-28 shadow-amber-500">
         <div class="flex w-full max-w-4xl overflow-hidden bg-white rounded-lg shadow-lg">
             <!-- Left Section (Logo and Branding) - Hidden on Mobile -->
-            <div class="hidden w-full md:flex md:w-1/2 bg-[#b1975b] items-center justify-center p-4 font-serif">
-                <div class="bg-white rounded-md">
-                    <div class="px-16 text-center py-28">
-                        <h1 class="pb-4 mb-4 font-serif text-3xl font-normal text-black">SIERRA<br>FASHION</h1>
-                        <p class="font-serif text-lg text-black">Clothing & Fashion Store</p>
-                    </div>
-                </div>
+            <!-- Left Section (Logo and Branding) - Hidden on Mobile -->
+            <div class="hidden w-1/2 bg-gray-200 md:flex">
+                <img src="{{ asset('assets/image/banner/registerFiller.jpg') }}" alt="filler image" class="w-300px">
             </div>
 
             <!-- Right Section (Login Form) -->
@@ -33,7 +29,7 @@
                         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                     </div>
                     <div class="mb-2">
-                        <a class="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
+                        <a class="text-blue-600 hover:underline" href="{{ route('login') }}">
                             {{ __('Already registered?') }}
                         </a>
                     </div>

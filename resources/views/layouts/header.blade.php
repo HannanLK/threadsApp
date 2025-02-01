@@ -1,5 +1,4 @@
- 
-    <header class="fixed top-0 left-0 z-40 w-full bg-white shadow-sm bg-gradient-to-l from-primary to-secondary" data-aos="fade-down">
+<header class="fixed top-0 left-0 z-40 w-full bg-black shadow-sm bg-gradient-to-l text-white" data-aos="fade-down">
         <div class="flex items-center justify-between px-4 mx-auto sm:px-6 lg:px-8">
             <!-- Logo -->
             <a href="/">
@@ -7,32 +6,32 @@
             </a>
             
             <!-- Desktop Navigation -->
-            <nav class="hidden space-x-6 md:flex">
+            <nav class="hidden space-x-6 md:flex items-right">
                 <ul class="flex space-x-4">
                     <li class="inline-block px-3 list-none"><a href="/" class="px-2 underline-animation">Home</a></li>
                     <li class="inline-block px-3 list-none"><a href="{{ route('shop.men') }}" class="px-2 underline-animation">Men</a></li>
                     <li class="inline-block px-3 list-none"><a href="{{ route('shop.women') }}" class="px-2 underline-animation">Women</a></li>
-                    <li class="inline-block px-3 list-none"><a href="#" class="px-2 underline-animation">Kids</a></li>
                     <li class="inline-block px-3 list-none"><a href="#" class="px-2 underline-animation">Accessories</a></li>
+                    <li class="inline-block px-3 list-none"><a href="#" class="px-2 underline-animation">Blog</a></li>
                     <li class="inline-block px-3 list-none"><a href="#" class="px-2 underline-animation">Contact Us</a></li>
                 </ul>
             </nav>
             
             <!-- Icons and Dropdown -->
             <ul class="hidden space-x-4 md:flex">
-                <li>
+                {{-- <li>
                     <button class="text-black hover:text-red-600">
                         <i class="fa-regular fa-heart fa-lg"></i>
                     </button>
-                </li>
+                </li> --}}
                 <li>
-                    <a href="{{ route('product.cart') }}" class="text-black hover:text-red-600">
+                    <a href="{{ route('product.cart') }}" class="text-white hover:text-gray-500">
                         <i class="fas fa-shopping-cart fa-lg"></i>
                     </a>
                 </li>
                 <li>
                     <div class="relative">
-                        <button id="dropdown-button" class="text-black hover:text-red-600 focus:outline-none" aria-expanded="false">
+                        <button id="dropdown-button" class="text-white hover:text-gray-500" aria-expanded="false">
                           <i class="fa-regular fa-circle-user fa-lg"></i>
                         </button>
                         <!-- Dropdown  -->
