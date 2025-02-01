@@ -1,4 +1,4 @@
-<header class="fixed top-0 left-0 z-40 w-full bg-white shadow-sm bg-gradient-to-l from-primary to-secondary" data-aos="fade-down">
+{{-- <header class="fixed top-0 left-0 z-40 w-full bg-white shadow-sm bg-gradient-to-l from-primary to-secondary" data-aos="fade-down">
     <div class="flex items-center justify-between px-4 mx-auto sm:px-6 lg:px-8">
         <!-- Logo -->
         <a href="/">
@@ -73,10 +73,10 @@
             </ul>
         </nav>
     </div>
-</header>
+</header> --}}
 
  <!-- Add this script for toggling the mobile menu -->
- <script>
+ {{-- <script>
     document.addEventListener('DOMContentLoaded', () => {
         const dropdownNav = document.getElementById('dropdown-nav');
         const dropdownMenu = document.getElementById('dropdown-menu1');
@@ -93,7 +93,7 @@
             }
         });
     });
-</script>
+</script> --}}
 
 
     <!-- Layout -->
