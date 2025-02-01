@@ -51,7 +51,7 @@ class CartController extends Controller
 
     public function checkout()
     {
-        $cartItems = Cart::where('user_id', auth()->id())
+        $cartItems = Cart::where('user_id', Auth::id())
                          ->with('product')
                          ->get();
 

@@ -21,11 +21,11 @@ Route::middleware('auth')->group(function () {
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.details');
 Route::get('/men', [ProductController::class, 'showMenProducts'])->name('shop.men');
 Route::get('/women', [ProductController::class, 'showWomenProducts'])->name('shop.women');
-
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact'); 
-
+Route::get('/accessory', function () {
+    return view('product.accessory');
+})->name('shop.accessory');
+Route::get('/blog', function () {return view('blog');})->name('blog');
+Route::get('/contact', function () {return view('contact');})->name('contact');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin-auth.php';

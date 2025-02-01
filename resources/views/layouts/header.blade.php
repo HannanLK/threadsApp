@@ -11,8 +11,8 @@
                     <li class="inline-block px-3 list-none"><a href="/" class="px-2 underline-animation">Home</a></li>
                     <li class="inline-block px-3 list-none"><a href="{{ route('shop.men') }}" class="px-2 underline-animation">Men</a></li>
                     <li class="inline-block px-3 list-none"><a href="{{ route('shop.women') }}" class="px-2 underline-animation">Women</a></li>
-                    <li class="inline-block px-3 list-none"><a href="#" class="px-2 underline-animation">Accessories</a></li>
-                    <li class="inline-block px-3 list-none"><a href="#" class="px-2 underline-animation">Blog</a></li>
+                    <li class="inline-block px-3 list-none"><a href="{{ route('shop.accessory') }}" class="px-2 underline-animation">Accessories</a></li>
+                    <li class="inline-block px-3 list-none"><a href="{{ route('blog') }}" class="px-2 underline-animation">Blog</a></li>
                     <li class="inline-block px-3 list-none"><a href="{{ route('contact') }}" class="px-2 underline-animation">Contact Us</a></li>
                 </ul>
             </nav>
@@ -66,10 +66,10 @@
                 <ul class="p-4 space-y-4">
                     <li><a href="/" class="block underline-animation">Home</a></li>
                     <li><a href="{{ route('shop.men') }}" class="block underline-animation">Men</a></li>
-                    <li><a href="#" class="block underline-animation">Women</a></li>
-                    <li><a href="#" class="block underline-animation">Kids</a></li> 
-                    <li><a href="#" class="block underline-animation">Accessories</a></li> 
-                    <li><a href="#" class="block underline-animation">Contact Us</a></li> 
+                    <li><a href="{{ route('shop.women') }}" class="block underline-animation">Women</a></li>
+                    <li><a href="{{ route('shop.accessory') }}" class="block underline-animation">Kids</a></li> 
+                    <li><a href="{{ route('blog') }}" class="block underline-animation">Accessories</a></li> 
+                    <li><a href="{{ route('contact') }}" class="block underline-animation">Contact Us</a></li> 
                 </ul>
             </nav>
         </div>

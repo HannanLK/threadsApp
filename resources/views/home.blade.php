@@ -18,7 +18,7 @@
                 <img src="{{ asset('assets\image\banner\banner2.png') }}" alt="Banner 2" class="w-full h-full object-cover">
                 <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
                     <h2 class="text-5xl font-light mb-6 text-pink-800">Exclusive Women's Wear</h2>
-                    <a href="{{ route('shop.men') }}" class="bg-pink-500 text-white px-4 py-2 rounded-sm mb-2">Shop Women's</a>
+                    <a href="{{ route('shop.women') }}" class="bg-pink-500 text-white px-4 py-2 rounded-sm mb-2">Shop Women's</a>
                 </div>
             </div>
             <!-- Slide 3 -->
@@ -26,7 +26,7 @@
                 <img src="{{ asset('assets\image\banner\banner3.png') }}" alt="Banner 3" class="w-full h-full object-cover">
                 <div class="absolute top-1/2 left-2/3 transform -translate-x-1/2 -translate-y-1/2">
                     <h2 class="text-5xl font-light mb-6 text-white">Exclusive Accessories</h2>
-                    <a href="{{ route('shop.men') }}" class="bg-emerald-800 text-white px-4 py-2 rounded-sm">Shop Accessories</a>
+                    <a href="{{ route('shop.accessory') }}" class="bg-emerald-800 text-white px-4 py-2 rounded-sm">Shop Accessories</a>
                 </div>
             </div>
         </div>
@@ -41,7 +41,8 @@
     <!-- Fashion New Trends Section -->
     <section class="pt-12 category">
         <div class="pb-8 text-center">
-            <h2 class="mt-2 text-3xl font-semibold">New Arrivals</h2>
+            <h2 class="text-3xl mb-3 text-center mt-2">NEW ARRIVALS</h2>
+            <hr class=" w-10 border-t-2 border-blue-950 mx-auto mb-2">
         </div>
         <div class="container grid grid-cols-2 gap-4 mx-auto mt-8 md:grid-cols-4">
             <div class="relative overflow-hidden hover-scale group" data-aos="flip-left">

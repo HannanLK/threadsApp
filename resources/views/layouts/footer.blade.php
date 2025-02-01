@@ -1,44 +1,30 @@
 <footer class="py-10 mt-auto bg-black">
     <div class="container grid gap-8 px-4 mx-auto sm:px-6 lg:px-8 md:grid-cols-2 lg:grid-cols-4">
-        <!-- About Section -->
-        <div class="space-y-5">
-            <div>
-                <img src="{{ asset('assets/image/logo.png') }}" alt="Sierra Fashion Logo" class="h-[50px] w-[80px]">
-            </div>
-            <p class="text-sm text-gray-400">
-                Sierra Fashion is an e-commerce platform that sells a wide variety of clothing essentials. It is a one-stop destination for all your clothing needs.
-            </p>
-            <div class="flex mt-4 space-x-2">
-                <img src="{{ asset('assets/image/visacard.png') }}" alt="Visa Card" class="h-6">
-            </div>
+        <!-- Left Section: Store Info and Logo -->
+        <div class="flex flex-col text-gray-400">
+            <a href="/">
+                <img src="{{ asset(path: 'assets\image\banner\logo3.png') }}" alt="Glitz Logo" class="w-40 mb-1">
+            </a>
+            <p class="mb-4 tracking-widest italic text-white">Where style meets elegance.</p>
+            <p>388, Union Place, Colombo 02<br> 0768535555</p>
+            <p>HannanMunas76@gmail.com</p>
         </div>
 
-        <!-- Shopping -->
+        <!-- Quick Links -->
         <div>
-            <h3 class="mb-4 text-lg text-white">SHOPPING</h3>
+            <h3 class="mb-4 text-lg text-white">Quick Links</h3>
             <ul class="space-y-2">
-                <li><a href="#" class="text-sm text-gray-400 hover:text-white">Men Store</a></li>
-                <li><a href="#" class="text-sm text-gray-400 hover:text-white">Women Store</a></li>
-                <li><a href="#" class="text-sm text-gray-400 hover:text-white">Kids Store</a></li>
-                <li><a href="#" class="text-sm text-gray-400 hover:text-white">Accessories</a></li>
-            </ul>
-        </div>
-
-        <!-- Customer Services -->
-        <div>
-            <h3 class="mb-4 text-lg text-white">CUSTOMER SERVICES</h3>
-            <ul class="space-y-2">
-                <li><a href="#" class="text-sm text-gray-400 hover:text-white">Contact Us</a></li>
-                <li><a href="#" class="text-sm text-gray-400 hover:text-white">Payment Methods</a></li>
-                <li><a href="#" class="text-sm text-gray-400 hover:text-white">Delivery</a></li>
-                <li><a href="#" class="text-sm text-gray-400 hover:text-white">Return & Exchange</a></li>
+                <li><a href="{{ route('shop.men') }}" class="text-sm text-gray-400 hover:text-white">Mens Clothing</a></li>
+                <li><a href="{{ route('shop.women') }}" class="text-sm text-gray-400 hover:text-white">Womens Clothing</a></li>
+                <li><a href="{{ route('shop.accessory') }}" class="text-sm text-gray-400 hover:text-white">Accessories</a></li>
+                <li><a href="{{ route('contact') }}" class="text-sm text-gray-400 hover:text-white">Contact</a></li>
             </ul>
         </div>
 
         <!-- Newsletter -->
         <div>
             <h3 class="mb-4 text-lg text-white">NEWSLETTER</h3>
-            <p class="mb-4 text-sm text-gray-400">Be the first to know about new arrivals, look books, sales & promos!</p>
+            <p class="mb-4 text-sm text-gray-400">Signup to our Newsletter For Latest Trends!</p>
             <form action="#" method="POST" class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
                 <input type="email" name="email" placeholder="Your Email" class="flex-1 px-4 py-2 text-sm text-white bg-transparent border rounded-md focus:outline-none">
                 <button type="submit" class="px-4 py-2 bg-gray-700 rounded-md hover:bg-gray-600">
@@ -46,20 +32,14 @@
                 </button>
             </form>
             <div class="flex mt-4 space-x-4">
-                <a href="#">
-                    <img src="{{ asset('assets/image/media1.png') }}" alt="Instagram" class="h-6">
+                <a href="https://x.com/HannanMunas">
+                    <img src="{{ asset(path: 'assets\image\banner\x.png') }}" alt="Twitter" class="h-6">
                 </a>
-                <a href="#">
-                    <img src="{{ asset('assets/image/media2.png') }}" alt="Facebook" class="h-6">
+                <a href="https://www.instagram.com/hannan.lk/">
+                    <img src="{{ asset('assets\image\banner\instagram.png') }}" alt="Instgram" class="h-6">
                 </a>
-                <a href="#">
-                    <img src="{{ asset('assets/image/media3.png') }}" alt="Twitter" class="h-6">
-                </a>
-                <a href="#">
-                    <img src="{{ asset('assets/image/media4.png') }}" alt="LinkedIn" class="h-6">
-                </a>
-                <a href="#">
-                    <img src="{{ asset('assets/image/media5.png') }}" alt="YouTube" class="h-6">
+                <a href="https://www.linkedin.com/in/hannanlk/">
+                    <img src="{{ asset('assets\image\banner\linkedin.png') }}" alt="linkedin" class="h-6">
                 </a>
             </div>
         </div>
@@ -68,12 +48,10 @@
     <script src="{{ asset('assets/js/canvas.js') }}"></script>
     <script src="{{ asset('assets/js/Product.js') }}"></script>
 
-    
-    
-
     <!-- AOS Script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         AOS.init();
     </script>
+
 </footer>
