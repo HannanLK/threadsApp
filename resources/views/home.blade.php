@@ -79,14 +79,13 @@
     <!-- Products Section -->
     <section class="py-16 category">
         <div class="pb-8 text-center" data-aos="fade-up">
-            <h2 class="mt-2 text-3xl font-semibold">Our Best Picks for You</h2>
+            <h2 class="mt-2 text-3xl font-semibold">Featured Products</h2>
         </div>
         <div class="flex justify-center pb-3 mb-6 space-x-4 text-center gap-7">
             <h2 id="menTab" class="text-xl font-semibold text-red-500 cursor-pointer sm:text-2xl ">Men's Fashion</h2>
             <h2 id="womenTab" class="text-xl font-semibold text-gray-500 cursor-pointer sm:text-2xl">Women's Fashion</h2>
         </div>
         
-    
         <div class="relative">
             <!-- Men Slider -->
             <div id="menSlider" class="grid grid-cols-2 px-4 overflow-hidden gap-x-4 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:px-8">     
@@ -287,7 +286,5 @@
             <img src="{{ asset('assets/image/brand6.png') }}" alt="Hugo Boss" class="h-12 delay-1000 md:h-28 animate-bounce">
         </div>
     </section>
-    
-   
 
 </x-app-layout>

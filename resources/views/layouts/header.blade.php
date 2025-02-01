@@ -13,7 +13,7 @@
                     <li class="inline-block px-3 list-none"><a href="{{ route('shop.women') }}" class="px-2 underline-animation">Women</a></li>
                     <li class="inline-block px-3 list-none"><a href="#" class="px-2 underline-animation">Accessories</a></li>
                     <li class="inline-block px-3 list-none"><a href="#" class="px-2 underline-animation">Blog</a></li>
-                    <li class="inline-block px-3 list-none"><a href="#" class="px-2 underline-animation">Contact Us</a></li>
+                    <li class="inline-block px-3 list-none"><a href="{{ route('contact') }}" class="px-2 underline-animation">Contact Us</a></li>
                 </ul>
             </nav>
             

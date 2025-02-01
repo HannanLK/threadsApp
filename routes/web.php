@@ -22,6 +22,10 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.d
 Route::get('/men', [ProductController::class, 'showMenProducts'])->name('shop.men');
 Route::get('/women', [ProductController::class, 'showWomenProducts'])->name('shop.women');
 
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact'); 
+
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin-auth.php';
