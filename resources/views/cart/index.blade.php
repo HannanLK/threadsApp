@@ -1,8 +1,7 @@
-<!-- filepath: /Users/inazawaelectronics/Documents/Apiit/2years/Sem-2/mad/MadProject/resources/views/cart/index.blade.php -->
 <x-app-layout>
     <section class="pt-20">
         <div class="max-w-screen-xl px-4 mx-auto">
-            <h1 class="text-3xl font-semibold">Your Ca</h1>
+            <h1 class="text-3xl font-semibold">Your Cart</h1>
             <div class="mt-6">
                 @if($cartItems->isEmpty())
                     <p>Your cart is empty.</p>
@@ -29,7 +28,7 @@
                                     <td class="px-4 py-2">Rs. {{ number_format($item->product->price) }}</td>
                                     <td class="px-4 py-2">Rs. {{ number_format($item->product->price * $item->quantity) }}</td>
                                     <td class="px-4 py-2">
-                                        <form method="POST" action="{{ route('cart.remove', $item->id) }}">
+                                        <form method="POST" action="{{ route('cart.remove', $item->product_id) }}">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="text-red-500">Remove</button>

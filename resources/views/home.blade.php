@@ -105,6 +105,8 @@
         </div>
     </section>
 
+    {{-- Notification When Adding a Product --}}
+
     <script>
         // Slider Functionality
         let currentIndex = 0;

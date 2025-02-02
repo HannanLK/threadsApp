@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -36,6 +37,16 @@ Route::prefix('admin')->group(function () {
     Route::put('/products/{id}/update', [ProductController::class, 'update'])->name('admin.updateproduct');
     Route::delete('/products/{id}/delete', [ProductController::class, 'destroy'])->name('admin.deleteproduct');
 });
+
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::get('cart', [CartController::class, 'index'])->name('product.cart');
+Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::get('checkout', [CartController::class, 'checkout'])->name('checkout')->middleware('auth');
+Route::post('process-payment', [CartController::class, 'processPayment'])->name('process.payment')->middleware('auth');
+Route::get('order-confirmation/{paymentId}/{finalTotal}', [CartController::class, 'orderConfirmation'])->name('order.confirmation')->middleware('auth');
+
+Route::post('/cart/updateQuantity', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
+
 
 
 require __DIR__.'/auth.php';

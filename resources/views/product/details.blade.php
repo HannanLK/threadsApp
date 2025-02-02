@@ -1,6 +1,4 @@
 <x-app-layout>
-    
-    
     <section class="pl-2 pt-28">
         <button onclick="window.history.back()" class="flex items-center space-x-2 text-lg font-medium text-black">
             <i class="fa-solid fa-angle-left"></i>
@@ -27,12 +25,14 @@
                         </div>
                     </div>
 
-                    <!-- product details - start -->
+                    <!-- product details -->
                     <div class="md:py-8">
                         <div class="mb-2 md:mb-3">
                             <h1 class="mb-2 text-2xl font-semibold md:text-3xl">{{ $product->name }}</h1>
                             <p class="font-normal text-gray-600">SKU: {{ $product->id }}</p>
                             <p class="mt-4 mb-6 text-xl font-semibold md:text-2xl">Rs {{ number_format($product->price) }}</p>
+                            <p>Product description</p>
+                            <p class="text-gray-500">{{ $product->description }}</p>
                         </div>
 
                         <!-- Size selection -->
@@ -92,36 +92,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="category">
-        <div class="flex justify-center border-b border-gray-200">
-            <nav class="flex -mb-px space-x-8 " aria-label="Tabs">
-                <button id="descriptionTab" class="px-1 py-4 text-sm font-medium text-gray-500 border-b-2 border-black tab text-black-900 border-black-500">
-                    Product description
-                </button>
-                <button id="additionalInfoTab" class="px-1 py-4 text-sm font-medium text-gray-500 border-b-2 tab hover:text-gray-700">
-                    Additional information
-                </button>
-                <button id="reviewsTab" class="px-1 py-4 text-sm font-medium text-gray-500 border-b-2 tab hover:text-gray-700">
-                    Product reviews
-                </button>
-            </nav>
-        </div>
-        <!-- Tab Content -->
-        <div class="max-w-3xl py-10 mx-auto mt-6">
-            <div id="descriptionContent" class="flex justify-center content">
-                <p>{{ $product->description }}</p>
-            </div>
-
-            <div id="additionalInfoContent" class="hidden content">
-                <p>Additional information goes here...</p>
-            </div>
-
-            <div id="reviewsContent" class="hidden content">
-                <p>Product reviews go here...</p>
             </div>
         </div>
     </section>

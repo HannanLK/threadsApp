@@ -15,7 +15,6 @@ use App\Mail\PaymentSuccess;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 
-
 class CartController extends Controller
 {
     public function add(Request $request)
@@ -27,30 +26,66 @@ class CartController extends Controller
             'color' => 'required|string',
         ]);
 
-        $cart = Cart::updateOrCreate(
-            ['user_id' => Auth::id(), 'product_id' => $request->product_id],
-            ['quantity' => $request->quantity, 'size' => $request->size, 'color' => $request->color]
-        );
+        if (Auth::check()) {
+            // Authenticated user
+            $cart = Cart::updateOrCreate(
+                ['user_id' => Auth::id(), 'product_id' => $request->product_id],
+                ['quantity' => $request->quantity, 'size' => $request->size, 'color' => $request->color]
+            );
+        } else {
+            // Guest user
+            $cart = session()->get('cart', []);
+            $cart[$request->product_id] = [
+                'product_id' => $request->product_id,
+                'quantity' => $request->quantity,
+                'size' => $request->size,
+                'color' => $request->color,
+            ];
+            session()->put('cart', $cart);
+        }
 
         return redirect()->route('product.details', ['id' => $request->product_id]);
     }
 
     public function index()
     {
-        $cartItems = Cart::where('user_id', Auth::id())->get();
+        if (Auth::check()) {
+            $cartItems = Cart::where('user_id', Auth::id())->get();
+        } else {
+            $cart = session()->get('cart', []);
+            $cartItems = collect($cart)->map(function ($item) {
+                return (object) [
+                    'product' => Product::find($item['product_id']),
+                    'quantity' => $item['quantity'],
+                    'size' => $item['size'],
+                    'color' => $item['color'],
+                ];
+            });
+        }
+
         return view('product.cart', compact('cartItems'));
     }
 
     public function remove($id)
     {
-        $cartItem = Cart::where('user_id', Auth::id())->where('id', $id)->firstOrFail();
-        $cartItem->delete();
+        if (Auth::check()) {
+            $cartItem = Cart::where('user_id', Auth::id())->where('id', $id)->firstOrFail();
+            $cartItem->delete();
+        } else {
+            $cart = session()->get('cart', []);
+            unset($cart[$id]);
+            session()->put('cart', $cart);
+        }
 
         return redirect()->route('product.cart');
     }
 
     public function checkout()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'You need to login to proceed to checkout.');
+        }
+
         $cartItems = Cart::where('user_id', Auth::id())
                          ->with('product')
                          ->get();
@@ -67,6 +102,10 @@ class CartController extends Controller
 
     public function processPayment(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'You need to login to proceed to checkout.');
+        }
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
@@ -145,13 +184,40 @@ class CartController extends Controller
         return view('order_confirmation', compact('payment', 'finalTotal'));
     }
 
+    public function updateQuantity(Request $request)
+    {
+        $request->validate([
+            'product_id' => 'required|exists:carts,id',
+            'quantity' => 'required|integer|min:1'
+        ]);
 
+        $cartItem = Cart::find($request->product_id);
+
+        if (!$cartItem) {
+            return response()->json(['success' => false, 'message' => 'Cart item not found.']);
+        }
+
+        $product = Product::find($cartItem->product_id);
+
+        if (!$product) {
+            return response()->json(['success' => false, 'message' => 'Product not found.']);
+        }
+
+        // Check if requested quantity exceeds available stock
+        if ($request->quantity > $product->stock) {
+            return response()->json([
+                'success' => false,
+                'message' => "Only {$product->stock} items left in stock."
+            ]);
+        }
+
+        // Update quantity in the cart
+        $cartItem->quantity = $request->quantity;
+        $cartItem->save();
+
+        return response()->json([
+            'success' => true,
+            'newTotal' => $cartItem->quantity * $product->price
+        ]);
+    }
 }
-
-
-
-
-
-
-
-
