@@ -20,7 +20,7 @@
                     class="block w-full py-2 px-4 rounded text-left bg-[#FFFFFF] text-[#000000] dark:bg-[#000000] dark:text-[#FFFFFF] hover:bg-[#000000] hover:text-[#FFFFFF] dark:hover:bg-[#6F6F6F] dark:hover:text-[#FFFFFF] flex items-center">
                     <i class="mr-3 fa-brands fa-blogger-b"></i> Blogs
                 </a>
-                <a href="{{ route('home') }}" 
+                <a href="{{ route('admin.inquiries.index') }}" 
                     class="block w-full py-2 px-4 rounded text-left bg-[#FFFFFF] text-[#000000] dark:bg-[#000000] dark:text-[#FFFFFF] hover:bg-[#000000] hover:text-[#FFFFFF] dark:hover:bg-[#6F6F6F] dark:hover:text-[#FFFFFF] flex items-center">
                     <i class="mr-3 fa-solid fa-headset"></i> Inquiries
                 </a>

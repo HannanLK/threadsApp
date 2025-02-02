@@ -7,13 +7,13 @@
         
         <!-- Desktop Navigation -->
         <nav class="flex items-center space-x-6">
-            <ul class="flex space-x-4">
-                <li class="inline-block px-3 list-none"><a href="/" class="px-2 underline-animation hover:text-white">Home</a></li>
-                <li class="inline-block px-3 list-none"><a href="{{ route('shop.men') }}" class="px-2 underline-animation hover:text-white">Men</a></li>
-                <li class="inline-block px-3 list-none"><a href="{{ route('shop.women') }}" class="px-2 underline-animation hover:text-white">Women</a></li>
-                <li class="inline-block px-3 list-none"><a href="{{ route('shop.accessory') }}" class="px-2 underline-animation hover:text-white">Accessories</a></li>
-                <li class="inline-block px-3 list-none"><a href="{{ route('blog') }}" class="px-2 underline-animation hover:text-white">Blog</a></li>
-                <li class="inline-block px-3 list-none"><a href="{{ route('contact') }}" class="px-2 underline-animation hover:text-white">Contact Us</a></li>
+            <ul class="flex space-x-4 font-sans">
+                <li class="inline-block px-3 list-none"><a href="/" class="px-2 underline-animation hover:text-white">HOME</a></li>
+                <li class="inline-block px-3 list-none"><a href="{{ route('shop.men') }}" class="px-2 underline-animation hover:text-white">MEN</a></li>
+                <li class="inline-block px-3 list-none"><a href="{{ route('shop.women') }}" class="px-2 underline-animation hover:text-white">WOMEN</a></li>
+                <li class="inline-block px-3 list-none"><a href="{{ route('shop.accessory') }}" class="px-2 underline-animation hover:text-white">ACCESSORIES</a></li>
+                <li class="inline-block px-3 list-none"><a href="{{ route('blog') }}" class="px-2 underline-animation hover:text-white">BLOG</a></li>
+                <li class="inline-block px-3 list-none"><a href="{{ route('contact') }}" class="px-2 underline-animation hover:text-white">CONTACT US</a></li>
             </ul>
             
             <!-- Icons and Dropdown -->

@@ -20,8 +20,8 @@ nav{
     left: 0;
     bottom: 0;
     width: 0;
-    height: 2px;
-    background-color: rgb(239, 26, 26);
+    height: 1px;
+    background-color: rgb(255, 255, 255);
     transition: width 0.4s ease;
 }
 

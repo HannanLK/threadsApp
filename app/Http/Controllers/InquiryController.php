@@ -11,6 +11,11 @@ class InquiryController extends Controller
     /**
      * Submit a new inquiry.
      */
+    public function index()
+    {
+        $inquiries = Inquiries::all();
+        return view('admin.inquiries', compact('inquiries'));
+    }
     public function submitInquiry(Request $request)
     {
         try {

@@ -5,14 +5,14 @@
             <a href="/">
                 <img src="{{ asset('assets/image/banner/logo3.png') }}" alt="Glitz Logo" class="w-40 mb-3">
             </a>
-            <p class="mb-4 tracking-widest italic text-white">Where style meets elegance.</p>
+            <p class="mb-4 tracking-widest text-white">Where style meets elegance.</p>
             <p>388, Union Place, Colombo 02<br> 0768535555</p>
             <p>HannanMunas76@gmail.com</p>
         </div>
 
         <!-- Quick Links -->
         <div class="md:text-left">
-            <h3 class="mb-4 text-lg text-white">Quick Links</h3>
+            <h3 class="mb-4 text-lg text-white">QUICKLINKS</h3>
             <ul class="space-y-2">
                 <li><a href="{{ route('shop.men') }}" class="text-sm text-gray-400 hover:text-white">Mens Clothing</a></li>
                 <li><a href="{{ route('shop.women') }}" class="text-sm text-gray-400 hover:text-white">Womens Clothing</a></li>
@@ -23,7 +23,7 @@
 
         <!-- Newsletter -->
         <div class="md:text-left">
-            <h3 class="mb-4 text-lg text-white">Newsletter</h3>
+            <h3 class="mb-4 text-lg text-white">NEWSLETTER</h3>
             <p class="mb-4 text-sm text-gray-400">Signup to our Newsletter For Latest Trends!</p>
             <form action="#" method="POST" class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
                 <input type="email" name="email" placeholder="Your Email" class="flex-1 px-4 py-2 text-sm text-white bg-transparent border border-gray-400 rounded-md focus:outline-none">

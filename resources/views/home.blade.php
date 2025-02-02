@@ -43,39 +43,31 @@
             <h2 class="text-3xl mb-3 text-center mt-2">NEW ARRIVALS</h2>
             <hr class=" w-10 border-t-2 border-blue-950 mx-auto mb-2">
         </div>
-        <div class="container grid grid-cols-2 gap-4 mx-auto mt-8 md:grid-cols-4">
-            <div class="relative overflow-hidden hover-scale group" data-aos="flip-left">
-                <img src="{{ asset('assets/image/category1.jpg') }}" alt="Women's Collection" class="object-cover w-full rounded-lg h-72">
-                <div class="absolute inset-0 flex flex-col justify-end p-4 transition-opacity duration-300 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100">
-                    <h3 class="text-lg font-bold text-white">WOMEN'S</h3>
-                    <a href="#" class="text-sm font-normal text-white">VIEW COLLECTION</a>
+        <div class="grid grid-cols-2 px-4 overflow-hidden gap-x-4 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:px-8">
+            @foreach($newArrivals as $product)
+                <div class="relative group" data-aos="zoom-in">
+                    <div class="w-full overflow-hidden bg-gray-200 rounded-md aspect-w-1 aspect-h-1 lg:aspect-none lg:h-80">
+                        <!-- Use the correct path for images in storage -->
+                        <img src="{{ asset('storage/products/' . $product->image) }}" alt="{{ $product->name }}" class="object-cover object-center w-full h-full lg:h-full lg:w-full">
+                    </div>
+                    <div class="flex justify-between mt-4">
+                        <div>
+                            <h3 class="text-sm text-gray-700">
+                                <a href="#">
+                                    <span aria-hidden="true" class="absolute inset-0"></span>
+                                    {{ $product->name }}
+                                </a>
+                            </h3>
+                            <p class="mt-1 text-sm text-gray-500">Rs {{ number_format($product->price, 2) }}</p>
+                        </div>
+                        <button class="mt-10">
+                            <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ff0000;"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-
-            <div class="relative overflow-hidden hover-scale group" data-aos="flip-up" data-aos-delay="300">
-                <img src="{{ asset('assets/image/category3.jpg') }}" alt="Men's Collection" class="object-cover w-full rounded-lg h-72">
-                <div class="absolute inset-0 flex flex-col justify-end p-4 transition-opacity duration-300 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100">
-                    <h3 class="text-lg font-bold text-white">MEN'S</h3>
-                    <a href="#" class="text-sm font-normal text-white">VIEW COLLECTION</a>
-                </div>
-            </div>
-
-            <div class="relative overflow-hidden hover-scale group" data-aos="flip-down" data-aos-delay="600">
-                <img src="{{ asset('assets/image/category2.png') }}" alt="Kids' Collection" class="object-cover w-full rounded-lg h-72">
-                <div class="absolute inset-0 flex flex-col justify-end p-4 transition-opacity duration-300 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100">
-                    <h3 class="text-lg font-bold text-white">KIDS</h3>
-                    <a href="#" class="text-sm font-normal text-white">VIEW COLLECTION</a>
-                </div>
-            </div>
-            <div class="relative overflow-hidden hover-scale group" data-aos="flip-right" data-aos-delay="900">
-                <img src="{{ asset('assets/image/category4.jpg') }}" alt="Accessories Collection" class="object-cover w-full rounded-lg h-72">
-                <div class="absolute inset-0 flex flex-col justify-end p-4 transition-opacity duration-300 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100">
-                    <h3 class="text-lg font-bold text-white">ACCESSORIES</h3>
-                    <a href="#" class="text-sm font-normal text-white">VIEW COLLECTION</a>
-                </div>
-            </div>
+            @endforeach
         </div>
-    </section> 
+    </section>
 
     <!-- Featured Products -->
     <section class="py-16 category">

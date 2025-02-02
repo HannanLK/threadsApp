@@ -17,41 +17,43 @@ class ProductController extends Controller
     {
         return view('admin.addproduct');
     }
-
+    
     public function store(Request $request)
     {
         $request->validate([
-            'product_name' => 'required|string|max:255',
-            'product_category' => 'required|string|max:255',
-            'product_price' => 'required|numeric|min:1',
-            'product_stock' => 'required|integer|min:1',
-            'size' => 'required|array',
-            'color' => 'required|array',
-            'product_description' => 'required|string',
-            'product_images' => 'required|array',
-            'product_images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'is_featured' => 'nullable|boolean',
-        ]);
+        'product_name' => 'required|string|max:255',
+        'product_category' => 'required|string|max:255',
+        'product_price' => 'required|numeric|min:1',
+        'product_stock' => 'required|integer|min:1',
+        'size' => 'required|array',
+        'color' => 'required|array',
+        'product_description' => 'required|string',
+        'product_images' => 'required|array',
+        'product_images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'is_featured' => 'nullable|boolean',
+    ]);
 
-        // Save each image and store paths in the array
-        $imagePaths = array_map(function ($image) {
-            return $image->store('products', 'public');
-        }, $request->file('product_images'));
+    // Save each image and store paths in the array
+    $imagePaths = [];
+    foreach ($request->file('product_images') as $image) {
+        $imagePaths[] = $image->store('products', 'public');
+    }
 
-        // Save the product with the image paths
-        Product::create([
-            'name' => $request->product_name,
-            'category' => $request->product_category,
-            'price' => $request->product_price,
-            'stock' => $request->product_stock,
-            'sizes' => $request->size,
-            'colors' => $request->color,
-            'description' => $request->product_description,
-            'images' => $imagePaths,
-            'is_featured' => $request->has('is_featured') ? (bool) $request->is_featured : false,
-        ]);
-
-        return redirect()->route('admin.viewproduct')->with('success', 'Product added successfully.');
+    // Save the product with the image paths
+    Product::create([
+        'name' => $request->product_name,
+        'category' => $request->product_category,
+        'price' => $request->product_price,
+        'stock' => $request->product_stock,
+        'sizes' => $request->size,
+        'colors' => $request->color,
+        'description' => $request->product_description,
+        'images' => $imagePaths,
+        'is_featured' => $request->has('is_featured') ? (bool) $request->is_featured : false,
+    ]);
+    
+    return redirect()->route('admin.viewproduct')->with('success', 'Product added successfully.');
+    
     }
 
     public function update(Request $request, $id)
@@ -128,10 +130,5 @@ class ProductController extends Controller
         return view('/', compact('featuredProducts'));
     }
 
-    public function showNewArrivals()
-    {
-        $newArrivals = Product::orderBy('created_at', 'desc')->take(8)->get();
-        return view('/', compact('newArrivals'));
-    }
 
 }
