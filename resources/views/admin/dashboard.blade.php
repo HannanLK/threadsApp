@@ -83,11 +83,11 @@
                             <table class="w-full text-left border-collapse">
                                 <thead>
                                     <tr class="text-gray-700 bg-gray-100 border-b border-gray-200">
-                                        <th class="px-6 py-3">Customer Name</th>
-                                        <th class="px-6 py-3">Item</th>
-                                        <th class="px-6 py-3">Quantity</th>
-                                        <th class="px-6 py-3">Quality Level</th>
-                                        <th class="px-6 py-3">Prices</th>
+                                        <th class="px-6 py-3">Order ID</th>
+                                        <th class="px-6 py-3">Date</th>
+                                        <th class="px-6 py-3">Customer</th>
+                                        <th class="px-6 py-3">Products</th>
+                                        <th class="px-6 py-3">Order Value</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -105,7 +105,6 @@
                                         <td class="px-6 py-3 text-gray-700">Human Consumption</td>
                                         <td class="px-6 py-3 font-semibold text-green-500">Rs. 5000</td>
                                     </tr>
-                                    <!-- Additional rows can be added here -->
                                 </tbody>
                             </table>
                         </div>

@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\InquiryController;
 
 
 Route::get('/', function () {
@@ -25,7 +25,10 @@ Route::get('/accessory', function () {
     return view('product.accessory');
 })->name('shop.accessory');
 Route::get('/blog', function () {return view('blog');})->name('blog');
+
 Route::get('/contact', function () {return view('contact');})->name('contact');
+
+Route::post('/contact', [InquiryController::class, 'submitInquiry'])->name('contact.submit');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin-auth.php';

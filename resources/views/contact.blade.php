@@ -1,9 +1,9 @@
 <x-app-layout>
-    <div class="container mx-auto py-10 px-4 sm:px-6 md:px-10 lg:px-14">
+    <div class="container mx-auto my-6 py-10 px-4 sm:px-6 md:px-10 lg:px-14">
         <h2 class="text-3xl font-bold text-left">CONTACT US</h2>
         <p class="text-left text-lg">
             388, Union Place, Colombo 02, Sri Lanka<br>
-            Phone: +94768535555
+            Phone: 0768535555
         </p>
 
         <!-- Google Maps Embed -->
@@ -43,36 +43,45 @@
 
     <hr class="w-10 border-t-2 border-blue-950 mx-auto my-5">
 
+
     <!-- Contact Form Section -->
     <div class="bg-white shadow-lg rounded-md mx-auto">
         <!-- Contact Form -->
-        <form id="contactForm" method="POST" class="p-6 rounded-lg shadow-md">
+        <form id="contactForm" method="POST" action="{{ route('contact.submit') }}" class="p-6 rounded-lg shadow-md">
+            @csrf <!-- CSRF token for security -->
             <h2 class="text-3xl font-semibold text-left my-2">REACH US</h2>
+
+            <!-- Name Field -->
             <div class="mb-4">
                 <label for="name" class="block text-gray-700">Name</label>
                 <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-lg" required>
             </div>
 
+            <!-- Email Field -->
             <div class="mb-4">
                 <label for="email" class="block text-gray-700">Email</label>
                 <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-lg" required>
             </div>
 
+            <!-- Contact Number Field -->
             <div class="mb-4">
-                <label for="contact_number" class="block text-gray-700">Contact Number</label>
-                <input type="text" id="contact_number" name="contact_number" class="w-full px-4 py-2 border rounded-lg" required>
+                <label for="contactNumber" class="block text-gray-700">Contact Number</label>
+                <input type="text" id="contactNumber" name="contactNumber" class="w-full px-4 py-2 border rounded-lg" required>
             </div>
 
+            <!-- Subject Field -->
             <div class="mb-4">
                 <label for="subject" class="block text-gray-700">Subject</label>
                 <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border rounded-lg" required>
             </div>
 
+            <!-- Message Field -->
             <div class="mb-4">
                 <label for="message" class="block text-gray-700">Message</label>
                 <textarea id="message" name="message" class="w-full px-4 py-2 border rounded-lg" rows="5" required></textarea>
             </div>
 
+            <!-- Buttons -->
             <div class="flex flex-col sm:flex-row">
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg mr-3 mb-2 sm:mb-0">Submit</button>
                 <button type="reset" id="clearBtn" class="bg-gray-500 text-white px-4 py-2 rounded-lg">Clear</button>
@@ -105,8 +114,47 @@
 
     <!-- Script to Clear Form -->
     <script>
+        // Assign CSRF token to a JS variable
+        const csrfToken = '{{ csrf_token() }}';
+
         document.getElementById('clearBtn').addEventListener('click', function () {
             document.getElementById('contactForm').reset(); // Clear form fields
         });
+
+        // JavaScript for AJAX Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            const form = e.target;
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken, // Use the JavaScript variable here
+                    'Accept': 'application/json'
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert(data.message); // Show success message
+                    form.reset(); // Clear the form
+                } else if (data.errors) {
+                    // Handle validation errors
+                    let errorMessages = '';
+                    for (const field in data.errors) {
+                        errorMessages += data.errors[field].join(', ') + '\n';
+                    }
+                    alert('Errors: \n' + errorMessages);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the form.');
+            });
+        });
+
     </script>
 </x-app-layout>

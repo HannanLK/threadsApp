@@ -1,40 +1,34 @@
-<header class="fixed top-0 left-0 z-40 w-full bg-black shadow-sm bg-gradient-to-l text-white" data-aos="fade-down">
-        <div class="flex items-center justify-between px-4 mx-auto sm:px-6 lg:px-8">
-            <!-- Logo -->
-            <a href="/">
-                <img src="{{asset('assets/image/logo_2.png')}}" alt="logo" class="w-[140px] ">
-            </a>
-            
-            <!-- Desktop Navigation -->
-            <nav class="hidden space-x-6 md:flex items-right">
-                <ul class="flex space-x-4">
-                    <li class="inline-block px-3 list-none"><a href="/" class="px-2 underline-animation">Home</a></li>
-                    <li class="inline-block px-3 list-none"><a href="{{ route('shop.men') }}" class="px-2 underline-animation">Men</a></li>
-                    <li class="inline-block px-3 list-none"><a href="{{ route('shop.women') }}" class="px-2 underline-animation">Women</a></li>
-                    <li class="inline-block px-3 list-none"><a href="{{ route('shop.accessory') }}" class="px-2 underline-animation">Accessories</a></li>
-                    <li class="inline-block px-3 list-none"><a href="{{ route('blog') }}" class="px-2 underline-animation">Blog</a></li>
-                    <li class="inline-block px-3 list-none"><a href="{{ route('contact') }}" class="px-2 underline-animation">Contact Us</a></li>
-                </ul>
-            </nav>
+<header class="fixed top-0 left-0 z-40 w-full bg-black shadow-sm bg-gradient-to-l text-white py-3" data-aos="fade-down">
+    <div class="flex items-center justify-between px-4 mx-auto sm:px-6 lg:px-8">
+        <!-- Logo -->
+        <a href="/">
+            <img src="{{ asset('assets\image\banner\logo3.png') }}" alt="logo" class="w-[140px]">
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="flex items-center space-x-6">
+            <ul class="flex space-x-4">
+                <li class="inline-block px-3 list-none"><a href="/" class="px-2 underline-animation hover:text-white">Home</a></li>
+                <li class="inline-block px-3 list-none"><a href="{{ route('shop.men') }}" class="px-2 underline-animation hover:text-white">Men</a></li>
+                <li class="inline-block px-3 list-none"><a href="{{ route('shop.women') }}" class="px-2 underline-animation hover:text-white">Women</a></li>
+                <li class="inline-block px-3 list-none"><a href="{{ route('shop.accessory') }}" class="px-2 underline-animation hover:text-white">Accessories</a></li>
+                <li class="inline-block px-3 list-none"><a href="{{ route('blog') }}" class="px-2 underline-animation hover:text-white">Blog</a></li>
+                <li class="inline-block px-3 list-none"><a href="{{ route('contact') }}" class="px-2 underline-animation hover:text-white">Contact Us</a></li>
+            </ul>
             
             <!-- Icons and Dropdown -->
-            <ul class="hidden space-x-4 md:flex">
-                {{-- <li>
-                    <button class="text-black hover:text-red-600">
-                        <i class="fa-regular fa-heart fa-lg"></i>
-                    </button>
-                </li> --}}
+            <ul class="flex space-x-4">
                 <li>
-                    <a href="{{ route('product.cart') }}" class="text-white hover:text-gray-500">
+                    <a href="{{ route('product.cart') }}" class="text-white hover:text-white">
                         <i class="fas fa-shopping-cart fa-lg"></i>
                     </a>
                 </li>
                 <li>
                     <div class="relative">
-                        <button id="dropdown-button" class="text-white hover:text-gray-500" aria-expanded="false">
-                          <i class="fa-regular fa-circle-user fa-lg"></i>
+                        <button id="dropdown-button" class="text-white hover:text-white" aria-expanded="false">
+                            <i class="fa-regular fa-circle-user fa-lg"></i>
                         </button>
-                        <!-- Dropdown  -->
+                        <!-- Dropdown -->
                         <div id="dropdown-menu" class="absolute right-0 hidden w-48 mt-2 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-button">
                             @auth
                                 <!-- If the user is authenticated, show their name and sign out option -->
@@ -42,7 +36,7 @@
                                 <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Profile</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
                                     @csrf
-                                    <button class="block w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-100" type="submit">Logout</button>
+                                    <button type="submit" class="block w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-100" role="menuitem">Logout</button>
                                 </form>
                             @else
                                 <!-- If the user is not authenticated, show login and guest info -->
@@ -50,15 +44,11 @@
                                 <a href="{{ route('login') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Login</a>
                             @endauth
                         </div>
-                    </div>   
+                    </div>
                 </li>
             </ul>
-            
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
-                <i class="fas fa-bars fa-lg"></i>
-            </button>
-        </div>
+        </nav>
+    </div>
     
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden bg-white md:hidden">
