@@ -67,18 +67,16 @@
     
     <!-- Add this script for toggling the mobile menu -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const dropdownNav = document.getElementById('dropdown-nav');
-            const dropdownMenu = document.getElementById('dropdown-menu1');
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdownButton = document.getElementById('dropdown-button');
+            const dropdownMenu = document.getElementById('dropdown-menu');
     
-            dropdownNav.addEventListener('click', () => {
-                const isExpanded = dropdownMenu.classList.contains('hidden');
-                dropdownMenu.classList.toggle('hidden', !isExpanded);
+            dropdownButton.addEventListener('click', function () {
+                dropdownMenu.classList.toggle('hidden');
             });
     
-            // Close dropdown when clicking outside
-            document.addEventListener('click', (event) => {
-                if (!dropdownNav.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            document.addEventListener('click', function (event) {
+                if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
                     dropdownMenu.classList.add('hidden');
                 }
             });

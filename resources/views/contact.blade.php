@@ -7,7 +7,7 @@
         </p>
 
         <!-- Google Maps Embed -->
-        <div class="shadow-lg rounded-md overflow-hidden">
+        <div class="shadow-lg rounded-md overflow-hidden my-6">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.765657661971!2d79.85865397475698!3d6.918595293081008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2596d3cb8fe07%3A0x2b0ae2edd563a661!2sAsia%20Pacific%20Institute%20of%20Information%20Technology%20(APIIT)!5e0!3m2!1sen!2slk!4v1726928000515!5m2!1sen!2slk"
                 width="100%"
@@ -20,79 +20,82 @@
     </div>
 
     <!-- Inquiries Section -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center my-6">
-        <!-- Showroom Inquiries -->
-        <div>
-            <h3 class="text-lg font-semibold mb-3">Showroom Inquiries</h3>
-            <p>9.00 AM - 6.00 PM (Mon - Fri)</p>
-            <button class="bg-black text-white px-4 py-2 rounded-lg mt-2">Call Now</button>
-        </div>
-        <!-- Online Inquiries -->
-        <div>
-            <h3 class="text-lg font-semibold mb-3">Online Inquiries</h3>
-            <p>Available 24/7</p>
-            <button class="bg-black text-white px-4 py-2 rounded-lg mt-2">Call Now</button>
-        </div>
-        <!-- Order Status Inquiries -->
-        <div>
-            <h3 class="text-lg font-semibold mb-3">Order Status Inquiries</h3>
-            <p>Available 24/7</p>
-            <button class="bg-black text-white px-4 py-2 rounded-lg mt-2">Call Now</button>
+    <div class="container mx-auto px-4 sm:px-6 md:px-10 lg:px-14">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center my-6">
+            <!-- Showroom Inquiries -->
+            <div>
+                <h3 class="text-lg font-semibold mb-3">Showroom Inquiries</h3>
+                <p>9.00 AM - 6.00 PM (Mon - Fri)</p>
+                <button class="bg-black text-white px-4 py-2 rounded-lg mt-2">Call Now</button>
+            </div>
+            <!-- Online Inquiries -->
+            <div>
+                <h3 class="text-lg font-semibold mb-3">Online Inquiries</h3>
+                <p>Available 24/7</p>
+                <button class="bg-black text-white px-4 py-2 rounded-lg mt-2">Call Now</button>
+            </div>
+            <!-- Order Status Inquiries -->
+            <div>
+                <h3 class="text-lg font-semibold mb-3">Order Status Inquiries</h3>
+                <p>Available 24/7</p>
+                <button class="bg-black text-white px-4 py-2 rounded-lg mt-2">Call Now</button>
+            </div>
         </div>
     </div>
 
     <hr class="w-10 border-t-2 border-blue-950 mx-auto my-5">
 
-
     <!-- Contact Form Section -->
-    <div class="bg-white shadow-lg rounded-md mx-auto">
-        <!-- Contact Form -->
-        <form id="contactForm" method="POST" action="{{ route('contact.submit') }}" class="p-6 rounded-lg shadow-md">
-            @csrf <!-- CSRF token for security -->
-            <h2 class="text-3xl font-semibold text-left my-2">REACH US</h2>
+    <div class="container mx-auto px-4 sm:px-6 md:px-10 lg:px-14">
+        <div class="bg-white shadow-lg rounded-md">
+            <!-- Contact Form -->
+            <form id="contactForm" method="POST" action="{{ route('contact.submit') }}" class="p-6 rounded-lg shadow-md">
+                @csrf <!-- CSRF token for security -->
+                <h2 class="text-3xl font-semibold text-left my-2">REACH US</h2>
 
-            <!-- Name Field -->
-            <div class="mb-4">
-                <label for="name" class="block text-gray-700">Name</label>
-                <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-lg" required>
-            </div>
+                <!-- Name Field -->
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700">Name</label>
+                    <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-lg" required>
+                </div>
 
-            <!-- Email Field -->
-            <div class="mb-4">
-                <label for="email" class="block text-gray-700">Email</label>
-                <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-lg" required>
-            </div>
+                <!-- Email Field -->
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700">Email</label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-lg" required>
+                </div>
 
-            <!-- Contact Number Field -->
-            <div class="mb-4">
-                <label for="contactNumber" class="block text-gray-700">Contact Number</label>
-                <input type="text" id="contactNumber" name="contactNumber" class="w-full px-4 py-2 border rounded-lg" required>
-            </div>
+                <!-- Contact Number Field -->
+                <div class="mb-4">
+                    <label for="contactNumber" class="block text-gray-700">Contact Number</label>
+                    <input type="text" id="contactNumber" name="contactNumber" class="w-full px-4 py-2 border rounded-lg" required>
+                </div>
 
-            <!-- Subject Field -->
-            <div class="mb-4">
-                <label for="subject" class="block text-gray-700">Subject</label>
-                <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border rounded-lg" required>
-            </div>
+                <!-- Subject Field -->
+                <div class="mb-4">
+                    <label for="subject" class="block text-gray-700">Subject</label>
+                    <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border rounded-lg" required>
+                </div>
 
-            <!-- Message Field -->
-            <div class="mb-4">
-                <label for="message" class="block text-gray-700">Message</label>
-                <textarea id="message" name="message" class="w-full px-4 py-2 border rounded-lg" rows="5" required></textarea>
-            </div>
+                <!-- Message Field -->
+                <div class="mb-4">
+                    <label for="message" class="block text-gray-700">Message</label>
+                    <textarea id="message" name="message" class="w-full px-4 py-2 border rounded-lg" rows="5" required></textarea>
+                </div>
 
-            <!-- Buttons -->
-            <div class="flex flex-col sm:flex-row">
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg mr-3 mb-2 sm:mb-0">Submit</button>
-                <button type="reset" id="clearBtn" class="bg-gray-500 text-white px-4 py-2 rounded-lg">Clear</button>
-            </div>
-        </form>
+                <!-- Buttons -->
+                <div class="flex flex-col sm:flex-row">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg mr-3 mb-2 sm:mb-0">Submit</button>
+                    <button type="reset" id="clearBtn" class="bg-gray-500 text-white px-4 py-2 rounded-lg">Clear</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <hr class="w-10 border-t-2 border-blue-950 mx-auto my-7">
 
     <!-- About Us -->
-    <div class="mt-5">
+    <div class="container mx-auto px-4 sm:px-6 md:px-10 lg:px-14 mt-5">
         <h2 class="text-3xl font-semibold mb-4">WHO ARE WE?</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Left Column: Image -->
@@ -100,7 +103,7 @@
                 <img src="{{ asset('assets/image/banner/aboutUs.jpg') }}" alt="about us image" class="w-full h-72 object-cover mb-4 rounded-lg">
             </div>
             <!-- Right Column: Text -->
-            <div class="text-gray-600 text-justify mx-3">
+            <div class="text-gray-600 text-justify">
                 <p>
                     Established in 1972, Glitz has become the leading fashion retailer in Sri Lanka, renowned for our dedication to customer satisfaction and innovation. 
                     In 2012, we expanded our operations overseas, bringing our unique blend of contemporary and culturally rich designs to a global audience.
@@ -155,6 +158,5 @@
                 alert('An error occurred while submitting the form.');
             });
         });
-
     </script>
 </x-app-layout>
