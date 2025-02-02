@@ -83,12 +83,11 @@
                                 <input type="hidden" name="color" id="selectedColor" value="">
                                 <input type="hidden" name="quantity" id="selectedQuantity" value="1">
                                 
-                                <button type="button" id="addToCartButton" class="flex items-center justify-center px-6 py-3 space-x-2 font-medium text-white bg-black rounded focus:outline-none">
+                                <button type="button" id="addToCartButton" class="flex items-center w-64 justify-center px-6 py-3 space-x-2 font-medium text-white bg-green-600 rounded focus:outline-none hover:bg-black">
                                     <i class="fa-solid fa-bag-shopping" style="color: #ffffff;"></i>
                                     <span>Add to cart</span>
                                 </button>
                             </form>
-                            <button class="px-6 py-3 font-medium text-white bg-black rounded focus:outline-none">Buy it now</button>
                         </div>
                     </div>
                 </div>
