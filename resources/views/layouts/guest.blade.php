@@ -22,16 +22,11 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="flex flex-col min-h-screen bg-gray-100 font-poppins">
+    <body class="flex flex-col min-h-screen bg-gray-300 font-poppins">
 
         @include('layouts.sidebar')
-   
+
         {{ $slot }}
-            
-        {{-- <!-- Fixed Footer Section -->
-        <footer class="fixed bottom-0 left-0 w-full py-4 text-center text-white bg-[#BFA86D]">
-            <p>&copy; 2024 Sierra Fashion. All rights reserved.</p>
-        </footer> --}}
         
         <script src="{{ asset('assets/js/canvas.js') }}"></script>
         <script src="{{ asset('assets/js/product.js') }}"></script>

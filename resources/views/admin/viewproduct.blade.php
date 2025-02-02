@@ -3,10 +3,7 @@
     <!-- Main Content Area -->
   <div class="flex-1 p-6 ml-64 overflow-y-auto">
       <div class="w-full max-w-6xl bg-white rounded-lg shadow-md">
-        <h2 class="pt-6 text-3xl font-semibold text-center text-gray-800">Manage Products</h2>
-        <div class="flex justify-center mt-2 mb-6">
-            <div class="w-24 h-1 bg-red-500"></div>
-        </div>
+        <h2 class="pt-6 text-2xl text-center text-gray-800">Manage Products</h2>
 
         @if (session('success'))
             <div class="p-4 mb-4 text-green-800 bg-green-200 border border-green-300 rounded">
@@ -17,13 +14,13 @@
              <!-- Product Table -->
              <div class="p-6">
                 <table class="w-full border-collapse table-auto">
-                    <thead class="bg-blue-500">
+                    <thead class="bg-black">
                         <tr class="text-white">
-                            <th class="p-4 text-left">Image</th>
-                            <th class="p-4 text-left">Name</th>
-                            <th class="p-4 text-left">Category</th>
-                            <th class="p-4 text-left">Price</th>
-                            <th class="p-4 text-center">Actions</th>
+                            <th class="p-3 text-left font-normal text-center">Image</th>
+                            <th class="p-3 text-left font-normal text-center">Name</th>
+                            <th class="p-3 text-left font-normal text-center">Category</th>
+                            <th class="p-3 text-left font-normal text-center">Price</th>
+                            <th class="p-3 text-center font-normal text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
