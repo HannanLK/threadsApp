@@ -12,8 +12,11 @@ class HomeController extends Controller
         // Fetch the 8 newest products
         $newArrivals = Product::orderBy('created_at', 'desc')->take(8)->get();
 
-        // Pass data to the home view
-        return view('home', compact('newArrivals'));
+        // Fetch featured products where 'is_featured' is true
+        $featuredProducts = Product::where('is_featured', true)->get();
+
+        // Pass both variables to the home view
+        return view('home', compact('newArrivals', 'featuredProducts'));
     }
 }
 

@@ -124,11 +124,4 @@ class ProductController extends Controller
         return view('product.details', compact('product'));
     }
 
-    public function showFeaturedProducts()
-    {
-        $featuredProducts = Product::where('is_featured', true)->get();
-        return view('/', compact('featuredProducts'));
-    }
-
-
 }

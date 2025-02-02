@@ -72,120 +72,39 @@
     <!-- Featured Products -->
     <section class="py-16 category">
         <div class="pb-8 text-center" data-aos="fade-up">
-            <h2 class="mt-2 text-3xl font-semibold">Featured Products</h2>
+            <h2 class="text-3xl mb-3 text-center mt-2">Featured Products</h2>
+            <hr class="w-10 border-t-2 border-blue-950 mx-auto mb-2">
         </div>
-        
+
         <div class="relative">
             <!-- Product Slider -->
             <div class="grid grid-cols-2 px-4 overflow-hidden gap-x-4 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:px-8">
-                <!-- Product 1 -->
-                <div class="relative group" data-aos="zoom-in">
-                    <div class="w-full overflow-hidden bg-gray-200 rounded-md aspect-w-1 aspect-h-1 lg:aspect-none lg:h-80">
-                        <img src="{{ asset('assets/image/product/men/product1.png') }}" alt="ADIDAS BASKETBALL LONG SLEEVE TEE" class="object-cover object-center w-full h-full lg:h-full lg:w-full">
-                    </div>
-                    <div class="flex justify-between mt-4">
-                        <div>
-                            <h3 class="text-sm text-gray-700">
-                                <a href="#">
-                                    <span aria-hidden="true" class="absolute inset-0"></span>
-                                    ADIDAS BASKETBALL LONG SLEEVE TEE
-                                </a>
-                            </h3>
-                            <p class="mt-1 text-sm text-gray-500">Rs 5,000.00</p>
+                @foreach($featuredProducts as $product)
+                    <div class="relative group" data-aos="zoom-in">
+                        <div class="w-full overflow-hidden bg-gray-200 rounded-md aspect-w-1 aspect-h-1 lg:aspect-none lg:h-80">
+                            <!-- Use the correct path for images in storage -->
+                            <img src="{{ asset('storage/products/' . $product->image) }}" alt="{{ $product->name }}" class="object-cover object-center w-full h-full lg:h-full lg:w-full">
                         </div>
-                        <button class="mt-10">
-                            <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ff0000;"></i>
-                        </button>
-                    </div>
-                </div>
-    
-                <!-- Product 2 -->
-                <div class="relative group" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="w-full overflow-hidden bg-gray-200 rounded-md aspect-w-1 aspect-h-1 lg:aspect-none lg:h-80">
-                        <img src="{{ asset('assets/image/product/men/product2.png') }}" alt="ADIDAS BASKETBALL LONG SLEEVE TEE" class="object-cover object-center w-full h-full lg:h-full lg:w-full">
-                    </div>
-                    <div class="flex justify-between mt-4">
-                        <div>
-                            <h3 class="text-sm text-gray-700">
-                                <a href="product.html">
-                                    <span aria-hidden="true" class="absolute inset-0"></span>
-                                    Casual Wear Printed Cuban Collar Shirt
-                                </a>
-                            </h3>
-                            <p class="mt-1 text-sm text-gray-500">Rs 3,000.00</p>
+                        <div class="flex justify-between mt-4">
+                            <div>
+                                <h3 class="text-sm text-gray-700">
+                                    <a href="#">
+                                        <span aria-hidden="true" class="absolute inset-0"></span>
+                                        {{ $product->name }}
+                                    </a>
+                                </h3>
+                                <p class="mt-1 text-sm text-gray-500">Rs {{ number_format($product->price, 2) }}</p>
+                            </div>
+                            <button class="mt-10">
+                                <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ff0000;"></i>
+                            </button>
                         </div>
-                        <button class="mt-10">
-                            <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ff0000;"></i>
-                        </button>
                     </div>
-                </div>
-    
-                <!-- Product 3 -->
-                <div class="relative group" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="w-full overflow-hidden bg-gray-200 rounded-md aspect-w-1 aspect-h-1 lg:aspect-none lg:h-80">
-                        <img src="{{ asset('assets/image/product/men/product3.png') }}" alt="ADIDAS BASKETBALL LONG SLEEVE TEE" class="object-cover object-center w-full h-full lg:h-full lg:w-full">
-                    </div>
-                    <div class="flex justify-between mt-4">
-                        <div>
-                            <h3 class="text-sm text-gray-700">
-                                <a href="#">
-                                    <span aria-hidden="true" class="absolute inset-0"></span>
-                                    C.D. Guadalajara ftblCULTURE Men's Hoodie
-                                </a>
-                            </h3>
-                            <p class="mt-1 text-sm text-gray-500">Rs 5,500.00</p>
-                        </div>
-                        <button class="mt-10">
-                            <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ff0000;"></i>
-                        </button>
-                    </div>
-                </div>
-    
-                <!-- Product 4 -->
-                <div class="relative group" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="w-full overflow-hidden bg-gray-200 rounded-md aspect-w-1 aspect-h-1 lg:aspect-none lg:h-80">
-                        <img src="{{ asset('assets/image/product/men/product4.png') }}" alt="ADIDAS BASKETBALL LONG SLEEVE TEE" class="object-cover object-center w-full h-full lg:h-full lg:w-full">
-                    </div>
-                    <div class="flex justify-between mt-4">
-                        <div>
-                            <h3 class="text-sm text-gray-700">
-                                <a href="#">
-                                    <span aria-hidden="true" class="absolute inset-0"></span>
-                                    LEVI'S® SPORTSWEAR LOGO GRAPHIC T-SHIRT
-                                </a>
-                            </h3>
-                            <p class="mt-1 text-sm text-gray-500">Rs 4,000.00</p>
-                        </div>
-                        <button class="mt-10">
-                            <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ff0000;"></i>
-                        </button>
-                    </div>
-                </div>
-    
-                <!-- Product 5 -->
-                <div class="relative group" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="w-full overflow-hidden bg-gray-200 rounded-md aspect-w-1 aspect-h-1 lg:aspect-none lg:h-80">
-                        <img src="{{ asset('assets/image/product/men/product5.png') }}" alt="ADIDAS BASKETBALL LONG SLEEVE TEE" class="object-cover object-center w-full h-full lg:h-full lg:w-full">
-                    </div>
-                    <div class="flex justify-between mt-4">
-                        <div>
-                            <h3 class="text-sm text-gray-700">
-                                <a href="#">
-                                    <span aria-hidden="true" class="absolute inset-0"></span>
-                                    Active Wear Printed Tank Top
-                                </a>
-                            </h3>
-                            <p class="mt-1 text-sm text-gray-500">Rs 2,000.00</p>
-                        </div>
-                        <button class="mt-10">
-                            <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ff0000;"></i>
-                        </button>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
-    
+
     <script>
         // Slider Functionality
         let currentIndex = 0;
