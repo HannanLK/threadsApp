@@ -1,27 +1,77 @@
 <x-guest-layout>
-
             <!-- Main Content -->
-            <main class="flex-1 p-6 ml-64 overflow-y-auto">
+            <main class="flex-1 p-6 ml-64 overflow-y-auto pt-0">
                 <header class="flex items-center justify-between pb-4 mb-4 border-b">
-                    <h1 class="text-2xl font-semibold text-gray-700">Seller Dashboard</h1>
-                    <a href="{{ route('admin.addproduct') }}" class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
+                    <h1 class="text-2xl font-semibold text-gray-700">Admin Dashboard</h1>
+                    <a href="{{ route('admin.addproduct') }}" class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-600">
                         <i class="mr-2 fas fa-plus"></i> Add Product
                     </a>
                 </header>
-    
-                <!-- Dashboard Cards -->
-                <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-                    <div class="p-6 text-center bg-white rounded shadow">
-                        <h3 class="text-gray-600">Total Orders</h3>
-                        <p class="text-2xl font-semibold">4</p>
+
+                <!-- Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Sales -->
+                    <div class="bg-cyan-600 text-white rounded-lg shadow-lg p-4">
+                        <h2 class="text-xl font-bold text-center">SALES REVENUE</h2>
+                        <p class="text-6xl font-semibold text-center mt-6">29,000</p>
                     </div>
-                    <div class="p-6 text-center bg-white rounded shadow">
-                        <h3 class="text-gray-600">Active Products</h3>
-                        <p class="text-2xl font-semibold">20</p>
+            
+                    <!-- Total Number of Products -->
+                    <div class="bg-amber-500 text-white rounded-md shadow-lg p-4">
+                        <h2 class="text-xl font-bold text-center">TOTAL PRODUCTS</h2>
+                        <p class="text-6xl font-semibold text-center mt-2">52</p>
+                        <hr class="my-3">
+                        <!-- Mens: Count -->
+                        <p class="flex justify-between mx-12">
+                            <span>Mens:</span>
+                            <span>10</span>
+                        </p>
+                        <!-- Womens: Count -->
+                        <p class="flex justify-between mx-12">
+                            <span>Womens:</span>
+                            <span>20</span>
+                        </p>
+                        <!-- Accessories: Count -->
+                        <p class="flex justify-between mx-12">
+                            <span>Accessories:</span>
+                            <span>25</span>
+                        </p>
                     </div>
-                    <div class="p-6 text-center bg-white rounded shadow">
-                        <h3 class="text-gray-600">Total Revenue</h3>
-                        <p class="text-2xl font-semibold text-yellow-500">Rs. 23,000</p>
+            
+                    <!-- Total Number of Users -->
+                    <div class="bg-pink-700 text-white rounded-lg shadow-lg p-4">
+                        <h2 class="text-xl font-bold">TOTAL USERS</h2>
+                        <p class="text-6xl font-semibold text-center mt-2">21</p>
+                        <hr class="my-3">
+                        <p class="flex justify-between mx-12">
+                            <span>Admins: </span>
+                            <span>10</span>
+                        </p>
+            
+                        <p class="flex justify-between mx-12">
+                            <span>Customers: </span>
+                            <span>11</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Second Row of Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                    <!-- Total Number of Blogs -->
+                    <div class="bg-gray-300 text-black rounded-lg shadow-lg p-6">
+                        <h2 class="text-xl font-bold text-center">TOTAL BLOGS</h2>
+                        <p class="text-6xl font-semibold text-center mt-6">10</p>
+                    </div>
+
+                    <!-- Total Number of Inquiries -->
+                    <div class="bg-gray-300 text-black rounded-lg shadow-lg p-6">
+                        <h2 class="text-xl font-bold text-center">PENDING INQUIRIES</h2>
+                        <p class="text-6xl font-semibold text-center mt-2">10</p>
+                        <hr class="my-4 border-gray-400">
+                        <p class="flex justify-between mx-12">
+                            <span>Total Inquiries:</span>
+                            <span>11</span>
+                        </p>
                     </div>
                 </div>
     

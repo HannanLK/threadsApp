@@ -3,9 +3,6 @@
         <div class="flex items-center justify-center flex-1">
             <div class="w-full max-w-4xl p-8 bg-gray-100 rounded-lg">
                 <h2 class="text-2xl font-semibold text-center text-gray-700">Add Products</h2>
-                <div class="flex justify-center mt-1 mb-6">
-                    <div class="w-20 h-1 bg-red-500"></div>
-                </div>
 
                 @if (session('success'))
                     <div class="p-4 mb-4 text-green-800 bg-green-200 border border-green-300 rounded">
