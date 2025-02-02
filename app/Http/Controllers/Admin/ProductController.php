@@ -30,6 +30,7 @@ class ProductController extends Controller
             'product_description' => 'required|string',
             'product_images' => 'required|array',
             'product_images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'is_featured' => 'nullable|boolean',
         ]);
 
         // Save each image and store paths in the array
@@ -47,9 +48,10 @@ class ProductController extends Controller
             'colors' => $request->color,
             'description' => $request->product_description,
             'images' => $imagePaths,
+            'is_featured' => $request->has('is_featured') ? (bool) $request->is_featured : false,
         ]);
 
-        return redirect()->route('admin.addproduct')->with('success', 'Product added successfully.');
+        return redirect()->route('admin.viewproduct')->with('success', 'Product added successfully.');
     }
 
     public function update(Request $request, $id)
@@ -108,13 +110,28 @@ class ProductController extends Controller
         return view('product.women', compact('products'));
     }
 
+    public function showAccessories()
+    {
+        $products = Product::where('category', 'Accessories')->get();
+        return view('product.accessories', compact('products'));
+    }
+
     public function show($productId)
     {
         $product = Product::findOrFail($productId); 
         return view('product.details', compact('product'));
     }
 
-    
+    public function showFeaturedProducts()
+    {
+        $featuredProducts = Product::where('is_featured', true)->get();
+        return view('/', compact('featuredProducts'));
+    }
 
+    public function showNewArrivals()
+    {
+        $newArrivals = Product::orderBy('created_at', 'desc')->take(8)->get();
+        return view('/', compact('newArrivals'));
+    }
 
 }

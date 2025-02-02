@@ -97,9 +97,9 @@
 
 
     <!-- Layout -->
-    <div class="flex flex-1 pt-24">
+    <div class="flex flex-1 pt-24 ">
         <!-- Sidebar -->
-        <aside class="fixed top-16 left-0 flex flex-col justify-between w-64 h-[calc(100vh-7rem)] bg-white shadow pt-10">
+        <aside class="fixed left-0 flex flex-col justify-between w-64 h-[calc(100vh-7rem)] bg-black shadow pt-10 text-white">
             <!-- Navigation Links -->
             <nav class="p-6 space-y-4">
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center text-gray-600 hover:text-green-600">

@@ -23,7 +23,7 @@
 
         <!-- Newsletter -->
         <div class="md:text-left">
-            <h3 class="mb-4 text-lg text-white">NEWSLETTER</h3>
+            <h3 class="mb-4 text-lg text-white">Newsletter</h3>
             <p class="mb-4 text-sm text-gray-400">Signup to our Newsletter For Latest Trends!</p>
             <form action="#" method="POST" class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
                 <input type="email" name="email" placeholder="Your Email" class="flex-1 px-4 py-2 text-sm text-white bg-transparent border border-gray-400 rounded-md focus:outline-none">

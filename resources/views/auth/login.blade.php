@@ -11,7 +11,7 @@
 
             <!-- Right Section (Login Form) -->
             <div class="w-full p-12 bg-gray-200 md:w-1/2 banner">
-                <h2 class="mb-6 font-serif text-3xl font-semibold text-center text-gray-800">LOGIN</h2>
+                <h2 class="mb-6 font-serif text-3xl text-center text-gray-800">Login</h2>
                 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf

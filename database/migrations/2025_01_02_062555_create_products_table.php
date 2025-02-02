@@ -17,6 +17,7 @@ return new class extends Migration
             $table->json('colors');
             $table->text('description');
             $table->json('images');
+            $table->boolean('is_featured')->default(false);
             $table->timestamps();
         });
     }

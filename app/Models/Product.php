@@ -21,6 +21,7 @@ class Product extends Model
         'colors',
         'description',
         'images',
+        'is_featured',
     ];
 
     protected $casts = [
@@ -29,6 +30,7 @@ class Product extends Model
         'images' => 'array',
         'price' => 'double', 
         'stock' => 'integer',
+        'is_featured' => 'boolean',
     ];
 
     public function carts()

@@ -24,10 +24,14 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
-
+        try {
+            $request->authenticate();
+        } catch (\Exception $e) {
+            return redirect()->route('login')->withErrors(['email' => 'The provided credentials are incorrect.']);
+        }
+    
         $request->session()->regenerate();
-
+    
         return redirect()->intended('/');
     }
 

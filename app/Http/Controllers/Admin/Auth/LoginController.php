@@ -24,10 +24,14 @@ class LoginController extends Controller
      */
     public function store(AdminLoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
-
+        try {
+            $request->authenticate();
+        } catch (\Exception $e) {
+            return redirect()->route('admin.login')->withErrors(['email' => 'The provided credentials are incorrect.']);
+        }
+    
         $request->session()->regenerate();
-
+    
         return redirect()->intended(route('admin.dashboard', absolute: false));
     }
 
