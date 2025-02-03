@@ -2,17 +2,12 @@
     
     <section class="pt-20 banner">
         <div class="text-center  bg-[url('assets/image/banner2.png')] bg-cover  h-[140px] items-center justify-center flex">
-            <h1 class="text-3xl font-semibold text-white ">Men's Collection</h1>
+            <h1 class="text-3xl font-semibold text-white ">Accessories</h1>
         </div>    
     </section>
 
     <!-- Filter & Search Section -->
     <section class="flex flex-col items-center p-6 mx-4 space-y-6 -translate-y-8 bg-white rounded-md shadow-lg md:flex-row md:justify-between md:space-y-0">
-        <!-- Filter Button -->
-        <button onclick="toggleSidebar()" class="px-6 py-2 text-sm text-white bg-[#CDAE71] rounded-lg shadow-md hover:bg-[#B1964E]">
-            <i class="fa-solid fa-filter"></i> Filters
-        </button>
-
        <!-- Search Bar -->
        <div class="relative flex items-center w-full max-w-lg mx-4">
             <form method="GET" action="" class="flex w-full">
@@ -49,89 +44,7 @@
         </form>
     </section>
 
-    <section class="relative flex flex-col mx-4 mb-6 space-y-6 md:flex-row md:space-y-0 md:space-x-6">
-        <!-- Sidebar Filters -->
-        <aside id="filter-sidebar" class="w-full p-4 bg-white rounded-lg shadow-md md:w-1/6">
-            <h2 class="pb-2 mb-4 text-xl font-bold border-b">Filters</h2>
-            <form method="GET" action="">
-                <div class="space-y-4">
-                    <!-- Color Filter -->
-                    <div>
-                        <button type="button" onclick="toggleDropdown('color')" class="flex justify-between w-full p-2 text-sm bg-[#E0D2B4] rounded-md hover:bg-[#B1964E]">
-                            Color <span id="color-arrow" class="text-gray-600">▼</span>
-                        </button>
-                        <div id="color-dropdown" class="hidden mt-2 ml-4 space-y-2">
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" name="color[]" value="Red" class="text-green-600 form-checkbox focus:ring-0" {{ in_array('Red', request('color', [])) ? 'checked' : '' }}>
-                                <span class="text-gray-700">Red</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" name="color[]" value="Green" class="text-green-600 form-checkbox focus:ring-0" {{ in_array('Green', request('color', [])) ? 'checked' : '' }}>
-                                <span class="text-gray-700">Green</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" name="color[]" value="Blue" class="text-green-600 form-checkbox focus:ring-0" {{ in_array('Blue', request('color', [])) ? 'checked' : '' }}>
-                                <span class="text-gray-700">Blue</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" name="color[]" value="Black" class="text-green-600 form-checkbox focus:ring-0" {{ in_array('Black', request('color', [])) ? 'checked' : '' }}>
-                                <span class="text-gray-700">Black</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" name="color[]" value="White" class="text-green-600 form-checkbox focus:ring-0" {{ in_array('White', request('color', [])) ? 'checked' : '' }}>
-                                <span class="text-gray-700">White</span>
-                            </label>
-                        </div>
-                    </div>
-                   
-
-                    <!-- Size Filter -->
-                    <div>
-                        <button type="button" onclick="toggleDropdown('size')" class="flex justify-between w-full p-2 text-sm bg-[#E0D2B4] rounded-md hover:bg-[#B1964E]">
-                            Sizes<span id="size-arrow" class="text-gray-600">▼</span>
-                        </button>
-                        <div id="size-dropdown" class="hidden mt-2 ml-4 space-y-2">
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" name="size[]" value="XS" class="text-green-600 form-checkbox focus:ring-0" {{ in_array('XS', request('size', [])) ? 'checked' : '' }}>
-                                <span class="text-gray-700">XS</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" name="size[]" value="S" class="text-green-600 form-checkbox focus:ring-0" {{ in_array('S', request('size', [])) ? 'checked' : '' }}>
-                                <span class="text-gray-700">S</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" name="size[]" value="M" class="text-green-600 form-checkbox focus:ring-0" {{ in_array('M', request('size', [])) ? 'checked' : '' }}>
-                                <span class="text-gray-700">M</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" name="size[]" value="L" class="text-green-600 form-checkbox focus:ring-0" {{ in_array('L', request('size', [])) ? 'checked' : '' }}>
-                                <span class="text-gray-700">L</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" name="size[]" value="XL" class="text-green-600 form-checkbox focus:ring-0" {{ in_array('XL', request('size', [])) ? 'checked' : '' }}>
-                                <span class="text-gray-700">XL</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Price Filter -->
-                    <div>
-                        <h3 class="text-sm font-semibold">Price</h3>
-                        <div class="flex items-center mt-2 space-x-2">
-                            <input type="number" name="min_price" value="{{ request('min_price') }}" placeholder="Min" class="w-full px-4 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:border-green-500">
-                            <span>-</span>
-                            <input type="number" name="max_price" value="{{ request('max_price') }}" placeholder="Max" class="w-full px-4 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:border-green-500">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Apply Button -->
-                <button type="submit" class="px-4 py-2 mt-4 text-white rounded bg-gradient-to-r from-indigo-500 to-blue-500 hover:from-indigo-400 hover:to-blue-400">
-                    Apply Filters
-                </button>
-            </form>
-        </aside>
-    
+    <section class="relative flex flex-col mx-4 mb-6 space-y-6 md:flex-row md:space-y-0 md:space-x-6">    
         <!-- Product Grid -->
         <div class="w-full p-4 bg-white rounded-lg shadow-md md:w-4/3">
             <h2 class="mb-4 text-2xl font-bold">Men's Products</h2>
@@ -173,7 +86,6 @@
                 @endforelse
             </div>
             
-           
         </div>
     </section>
     

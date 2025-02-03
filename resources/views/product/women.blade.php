@@ -2,7 +2,7 @@
     
     <section class="pt-20 banner">
         <div class="text-center  bg-[url('assets/image/banner2.png')] bg-cover  h-[140px] items-center justify-center flex">
-            <h1 class="text-3xl font-semibold text-white ">Men's Collection</h1>
+            <h1 class="text-3xl font-semibold text-white ">Womens Collection</h1>
         </div>    
     </section>
 
@@ -134,7 +134,7 @@
     
         <!-- Product Grid -->
         <div class="w-full p-4 bg-white rounded-lg shadow-md md:w-4/3">
-            <h2 class="mb-4 text-2xl font-bold">Men's Products</h2>
+            <h2 class="mb-4 text-2xl font-bold">Womens Products</h2>
             <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5">
                 @forelse ($products as $product)
                 <a href="{{ route('product.details', ['id' => $product->id]) }}" class="transition-transform bg-white border border-gray-300 rounded-lg shadow-md hover:shadow-2xl hover:scale-105">
