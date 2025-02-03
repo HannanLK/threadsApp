@@ -92,18 +92,18 @@
                                 </thead>
                                 <tbody>
                                     <tr class="border-b hover:bg-gray-50">
-                                        <td class="px-6 py-3 text-gray-700">Hirusha Gamage</td>
-                                        <td class="px-6 py-3 text-gray-700">Carrot</td>
-                                        <td class="px-6 py-3 text-gray-700">50Kg</td>
-                                        <td class="px-6 py-3 text-gray-700">Human Consumption</td>
-                                        <td class="px-6 py-3 font-semibold text-green-500">Rs. 3000</td>
+                                        <td class="px-6 py-3 text-gray-700">SKU02020</td>
+                                        <td class="px-6 py-3 text-gray-700">2025/01/28</td>
+                                        <td class="px-6 py-3 text-gray-700">Hannan Munas</td>
+                                        <td class="px-6 py-3 text-gray-700">Colourless T shirt</td>
+                                        <td class="px-6 py-3 font-semibold text-green-500">5000</td>
                                     </tr>
                                     <tr class="border-b hover:bg-gray-50">
-                                        <td class="px-6 py-3 text-gray-700">Hirusha Gamage</td>
-                                        <td class="px-6 py-3 text-gray-700">Carrot</td>
-                                        <td class="px-6 py-3 text-gray-700">50Kg</td>
-                                        <td class="px-6 py-3 text-gray-700">Human Consumption</td>
-                                        <td class="px-6 py-3 font-semibold text-green-500">Rs. 5000</td>
+                                        <td class="px-6 py-3 text-gray-700">SKU1010</td>
+                                        <td class="px-6 py-3 text-gray-700">2020/10/10</td>
+                                        <td class="px-6 py-3 text-gray-700">Sunny Lene</td>
+                                        <td class="px-6 py-3 text-gray-700">Skirts</td>
+                                        <td class="px-6 py-3 font-semibold text-green-500">Rs. 45000</td>
                                     </tr>
                                 </tbody>
                             </table>
