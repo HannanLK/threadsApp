@@ -6,8 +6,6 @@
         </div>    
     </section>
 
-   
-    
     <!-- Filter & Search Section -->
     <section class="flex flex-col items-center p-6 mx-4 space-y-6 -translate-y-8 bg-white rounded-md shadow-lg md:flex-row md:justify-between md:space-y-0">
         <!-- Filter Button -->
