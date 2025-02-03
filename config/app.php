@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Sierra Fashion'),
+    'name' => env('APP_NAME', 'Urban Threads'),
 
     /*
     |--------------------------------------------------------------------------
