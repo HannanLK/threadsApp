@@ -12,7 +12,7 @@
                         name="search" 
                         value="{{ request('search') }}" 
                         placeholder="Search for products..." 
-                        class="w-full py-3 pl-4 pr-12 text-sm border rounded-full shadow-sm focus:ring-2 focus:ring-[#B1964E] bg-transparent"
+                        class="w-full py-3 pl-4 pr-12 text-sm border rounded-full shadow-sm focus:ring-2 focus:ring-[#B1964E] bg-transparent text-white"
                     >
                     <!-- Search Button -->
                     <button 

@@ -1,6 +1,6 @@
 <x-app-layout>
-    <section class="pt-20 banner">
-        <div class="text-center bg-[url('assets/image/banner2.png')] bg-cover h-[200px] items-center justify-center flex relative">
+    <section class="banner">
+        <div class="text-center bg-[url('assets/image/banner/acc.jpg')] bg-cover h-[300px] items-center justify-center flex relative">
             <h1 class="text-3xl font-semibold text-white ">Accessories</h1>
 
             <!-- Search Bar (Bottom Left) -->
@@ -12,12 +12,12 @@
                         name="search" 
                         value="{{ request('search') }}" 
                         placeholder="Search for products..." 
-                        class="w-full py-3 pl-4 pr-12 text-sm border rounded-full shadow-sm focus:ring-2 focus:ring-[#B1964E] bg-transparent"
+                        class="w-full py-3 pl-4 pr-12 text-sm border rounded-full shadow-sm focus:ring-2 focus:ring-[#B1964E] bg-transparent text-white"
                     >
                     <!-- Search Button -->
                     <button 
                         type="submit" 
-                        class="absolute inset-y-0 flex items-center text-gray-400 right-3 hover:text-[#B1964E] bg-transparent"
+                        class="absolute inset-y-0 flex items-center text-white right-3 hover:text-[#B1964E] bg-transparent"
                     >
                         <i class="fa-solid fa-search"></i>
                     </button>
