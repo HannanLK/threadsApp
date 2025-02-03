@@ -115,7 +115,7 @@ class CartController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'You need to login to proceed to checkout.');
         }
-
+    
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
@@ -125,25 +125,31 @@ class CartController extends Controller
             'postal_code' => 'required|string|max:10',
             'stripeToken' => 'required|string',
         ]);
-
+    
         Stripe::setApiKey(env('STRIPE_SECRET'));
-
+    
         try {
             $cartItems = Cart::where('user_id', Auth::id())->with('product')->get();
+    
+            // Filter out cart items that do not have a corresponding product
+            $cartItems = $cartItems->filter(function ($cartItem) {
+                return $cartItem->product !== null;
+            });
+    
             $productTotal = $cartItems->sum(function ($cartItem) {
                 return $cartItem->quantity * $cartItem->product->price;
             });
-
+    
             $shippingPrice = 100.00; // Fixed shipping price
             $finalTotal = $productTotal + $shippingPrice;
-
+    
             $charge = Charge::create([
                 'amount' => $finalTotal * 100,
                 'currency' => 'LKR',
                 'source' => $request->stripeToken,
                 'description' => 'Order Payment',
             ]);
-
+    
             // Save the payment record
             $payment = new Payment();
             $payment->user_id = Auth::id();
@@ -157,7 +163,7 @@ class CartController extends Controller
             $payment->payment_status = 'completed';
             $payment->total_amount = $finalTotal; // Save the final total in the payment record
             $payment->save();
-
+    
             // Save each cart item as a payment item
             foreach ($cartItems as $cartItem) {
                 PaymentItem::create([
@@ -167,7 +173,7 @@ class CartController extends Controller
                     'price' => $cartItem->product->price,
                 ]);
             }
-
+    
             // Save the order
             $order = new Order();
             $order->user_id = Auth::id();
@@ -175,13 +181,13 @@ class CartController extends Controller
             $order->total_amount = $finalTotal;
             $order->status = 'processing';
             $order->save();
-
+    
             // Clear the user's cart
             Cart::where('user_id', Auth::id())->delete();
-
+    
             // Send payment success email
             Mail::to($payment->email)->send(new PaymentSuccess($payment, $finalTotal));
-
+    
             return redirect()->route('order.confirmation', ['payment' => $payment->id, 'finalTotal' => $finalTotal]);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Error! ' . $e->getMessage()], 500);

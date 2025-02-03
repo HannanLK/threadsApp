@@ -40,8 +40,8 @@
                                 </form>
                             @else
                                 <!-- If the user is not authenticated, show login and guest info -->
-                                <span class="block px-4 py-2 font-serif text-lg text-red-500">Hi, Guest</span>
-                                <a href="{{ route('login') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Login</a>
+                                <span class="block px-4 py-2 font-serif text-lg text-black">Hi, Guest</span>
+                                <a href="{{ route('login') }}" class="block px-4 py-2 text-sm text-black hover:bg-gray-100" role="menuitem">Login</a>
                             @endauth
                         </div>
                     </div>
