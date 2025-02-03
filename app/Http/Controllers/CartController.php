@@ -92,18 +92,21 @@ class CartController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'You need to login to proceed to checkout.');
         }
-
+    
         $cartItems = Cart::where('user_id', Auth::id())
                          ->with('product')
-                         ->get();
-
+                         ->get()
+                         ->filter(function ($cartItem) {
+                             return $cartItem->product !== null;
+                         });
+    
         $productTotal = $cartItems->sum(function($cartItem) {
             return $cartItem->quantity * $cartItem->product->price;
         });
-
+    
         $shippingPrice = 100.00;
         $finalTotal = $productTotal + $shippingPrice;
-
+    
         return view('product.checkout', compact('cartItems', 'productTotal', 'shippingPrice', 'finalTotal'));
     }
 
