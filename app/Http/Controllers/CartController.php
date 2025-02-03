@@ -197,19 +197,19 @@ class CartController extends Controller
             'product_id' => 'required|exists:carts,id',
             'quantity' => 'required|integer|min:1'
         ]);
-
+    
         $cartItem = Cart::find($request->product_id);
-
+    
         if (!$cartItem) {
             return response()->json(['success' => false, 'message' => 'Cart item not found.']);
         }
-
+    
         $product = Product::find($cartItem->product_id);
-
+    
         if (!$product) {
             return response()->json(['success' => false, 'message' => 'Product not found.']);
         }
-
+    
         // Check if requested quantity exceeds available stock
         if ($request->quantity > $product->stock) {
             return response()->json([
@@ -217,14 +217,17 @@ class CartController extends Controller
                 'message' => "Only {$product->stock} items left in stock."
             ]);
         }
-
+    
         // Update quantity in the cart
         $cartItem->quantity = $request->quantity;
         $cartItem->save();
-
+    
+        // Calculate the new total for the item
+        $newTotal = $cartItem->quantity * $product->price;
+    
         return response()->json([
             'success' => true,
-            'newTotal' => $cartItem->quantity * $product->price
+            'newTotal' => $newTotal
         ]);
     }
 }

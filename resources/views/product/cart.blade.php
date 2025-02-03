@@ -131,11 +131,11 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        quantityInput.value = quantity + 1;
-                        row.querySelector('.item-total').textContent = `Rs. ${data.newTotal.toFixed(2)}`; // Ensure correct update
-                        recalculateTotals();
+                        quantityInput.value = quantity + 1; // Update the quantity input field
+                        row.querySelector('.item-total').textContent = `Rs. ${data.newTotal.toFixed(2)}`; // Update the item total
+                        recalculateTotals(); // Recalculate the subtotal, tax, and total
                     } else {
-                        alert(data.message);
+                        alert(data.message); // Show error message if the update fails
                     }
                 })
                 .catch(error => console.error('Error:', error));
@@ -161,11 +161,11 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            quantityInput.value = quantity - 1;
-                            row.querySelector('.item-total').textContent = `Rs. ${data.newTotal.toFixed(2)}`;
-                            recalculateTotals();
+                            quantityInput.value = quantity - 1; // Update the quantity input field
+                            row.querySelector('.item-total').textContent = `Rs. ${data.newTotal.toFixed(2)}`; // Update the item total
+                            recalculateTotals(); // Recalculate the subtotal, tax, and total
                         } else {
-                            alert(data.message);
+                            alert(data.message); // Show error message if the update fails
                         }
                     })
                     .catch(error => console.error('Error:', error));
