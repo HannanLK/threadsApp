@@ -24,37 +24,39 @@
                     </thead>
                     <tbody id="cartItems">
                         @foreach ($cartItems as $cartItem)
-                            @php
-                                $itemTotal = $cartItem->quantity * $cartItem->product->price;
-                            @endphp
-                            <tr data-product-id="{{ $cartItem->id }}">
-                                <td class="border px-4 py-2">
-                                    <div class="flex items-center gap-4">
-                                        <img src="{{ asset('storage/' . $cartItem->product->images[0]) }}" 
-                                             alt="{{ $cartItem->product->name }}" 
-                                             class="w-20 h-20 object-cover ml-2">
-                                        <div>
-                                            <span class="font-semibold">{{ $cartItem->product->name }}</span><br>
-                                            <p class="text-sm text-gray-500">Size: {{ $cartItem->size }} | Color: {{ $cartItem->color }}</p>
-                                            <form action="{{ route('cart.remove', $cartItem->id) }}" method="POST" class="inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="text-red-600 hover:underline">Remove</button>
-                                            </form>
+                            @if ($cartItem->product)
+                                @php
+                                    $itemTotal = $cartItem->quantity * $cartItem->product->price;
+                                @endphp
+                                <tr data-product-id="{{ $cartItem->product->id }}">
+                                    <td class="border px-4 py-2">
+                                        <div class="flex items-center gap-4">
+                                            <img src="{{ asset('storage/' . $cartItem->product->images[0]) }}" 
+                                                 alt="{{ $cartItem->product->name }}" 
+                                                 class="w-20 h-20 object-cover ml-2">
+                                            <div>
+                                                <span class="font-semibold">{{ $cartItem->product->name }}</span><br>
+                                                <p class="text-sm text-gray-500">Size: {{ $cartItem->size }} | Color: {{ $cartItem->color }}</p>
+                                                <form action="{{ route('cart.remove', $cartItem->product->id) }}" method="POST" class="inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="text-red-600 hover:underline">Remove</button>
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="border px-4 py-2 text-center">Rs. {{ number_format($cartItem->product->price, 2) }}</td>
+                                    </td>
+                                    <td class="border px-4 py-2 text-center">Rs. {{ number_format($cartItem->product->price, 2) }}</td>
 
-                                <!-- Quantity Column with + and - buttons -->
-                                <td class="border px-4 py-2 flex items-center justify-center">
-                                    <button class="bg-gray-100 px-3 py-1 decrement" data-id="{{ $cartItem->id }}">-</button>
-                                    <input type="text" value="{{ $cartItem->quantity }}" readonly class="quantity w-12 text-center border rounded-md mx-2">
-                                    <button class="bg-gray-100 px-3 py-1 increment" data-id="{{ $cartItem->id }}">+</button>
-                                </td>
+                                    <!-- Quantity Column with + and - buttons -->
+                                    <td class="border px-4 py-2 flex items-center justify-center">
+                                        <button class="bg-gray-100 px-3 py-1 decrement" data-id="{{ $cartItem->product->id }}">-</button>
+                                        <input type="text" value="{{ $cartItem->quantity }}" readonly class="quantity w-12 text-center border rounded-md mx-2">
+                                        <button class="bg-gray-100 px-3 py-1 increment" data-id="{{ $cartItem->product->id }}">+</button>
+                                    </td>
 
-                                <td class="border px-4 py-2 text-center item-total">Rs. {{ number_format($itemTotal, 2) }}</td>
-                            </tr>
+                                    <td class="border px-4 py-2 text-center item-total">Rs. {{ number_format($itemTotal, 2) }}</td>
+                                </tr>
+                            @endif
                         @endforeach
                     </tbody>
                 </table>
@@ -66,15 +68,15 @@
                     <tbody>
                         <tr>
                             <td class="px-4 py-2 border text-left font-medium">Subtotal</td>
-                            <td class="px-4 py-2 border text-right">Rs. <span id="subtotal">{{ number_format($cartItems->sum(fn($item) => $item->quantity * $item->product->price), 2) }}</span></td>
+                            <td class="px-4 py-2 border text-right">Rs. <span id="subtotal">{{ number_format($cartItems->sum(fn($item) => $item->product ? $item->quantity * $item->product->price : 0), 2) }}</span></td>
                         </tr>
                         <tr>
                             <td class="px-4 py-2 border text-left font-medium">Tax (10%)</td>
-                            <td class="px-4 py-2 border text-right">Rs. <span id="tax">{{ number_format($cartItems->sum(fn($item) => $item->quantity * $item->product->price) * 0.1, 2) }}</span></td>
+                            <td class="px-4 py-2 border text-right">Rs. <span id="tax">{{ number_format($cartItems->sum(fn($item) => $item->product ? $item->quantity * $item->product->price : 0) * 0.1, 2) }}</span></td>
                         </tr>
                         <tr>
                             <td class="px-4 py-2 border text-left font-semibold">Total</td>
-                            <td class="px-4 py-2 border text-right font-semibold">Rs. <span id="total">{{ number_format($cartItems->sum(fn($item) => $item->quantity * $item->product->price) * 1.1, 2) }}</span></td>
+                            <td class="px-4 py-2 border text-right font-semibold">Rs. <span id="total">{{ number_format($cartItems->sum(fn($item) => $item->product ? $item->quantity * $item->product->price : 0) * 1.1, 2) }}</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -162,6 +164,8 @@
                             quantityInput.value = quantity - 1;
                             row.querySelector('.item-total').textContent = `Rs. ${data.newTotal.toFixed(2)}`;
                             recalculateTotals();
+                        } else {
+                            alert(data.message);
                         }
                     })
                     .catch(error => console.error('Error:', error));

@@ -50,19 +50,26 @@ class CartController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $cartItems = Cart::where('user_id', Auth::id())->get();
+            $cartItems = Cart::where('user_id', Auth::id())->with('product')->get();
+            $cartItems = $cartItems->filter(function ($cartItem) {
+                return $cartItem->product !== null;
+            });
         } else {
             $cart = session()->get('cart', []);
             $cartItems = collect($cart)->map(function ($item) {
-                return (object) [
-                    'product' => Product::find($item['product_id']),
-                    'quantity' => $item['quantity'],
-                    'size' => $item['size'],
-                    'color' => $item['color'],
-                ];
-            });
+                $product = Product::find($item['product_id']);
+                if ($product) {
+                    return (object) [
+                        'product' => $product,
+                        'quantity' => $item['quantity'],
+                        'size' => $item['size'],
+                        'color' => $item['color'],
+                    ];
+                }
+                return null;
+            })->filter();
         }
-
+    
         return view('product.cart', compact('cartItems'));
     }
 
