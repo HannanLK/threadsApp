@@ -115,7 +115,7 @@ class ProductController extends Controller
     public function showAccessories()
     {
         $products = Product::where('category', 'Accessories')->get();
-        return view('product.accessories', compact('products'));
+        return view('product.accessory', compact('products'));
     }
 
     public function show($productId)

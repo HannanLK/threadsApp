@@ -1,15 +1,11 @@
 <x-app-layout>
-    <!-- Header Section -->
-    @include('layouts.header')
-
+    
     <section class="pt-20 banner">
-        <div class="text-center  bg-[url('assets/image/banner4.png')] bg-cover  h-[140px] items-center justify-center flex">
-            <h1 class="text-3xl font-semibold text-white ">Women's Collection</h1>
+        <div class="text-center  bg-[url('assets/image/banner2.png')] bg-cover  h-[140px] items-center justify-center flex">
+            <h1 class="text-3xl font-semibold text-white ">Men's Collection</h1>
         </div>    
     </section>
 
-   
-    
     <!-- Filter & Search Section -->
     <section class="flex flex-col items-center p-6 mx-4 space-y-6 -translate-y-8 bg-white rounded-md shadow-lg md:flex-row md:justify-between md:space-y-0">
         <!-- Filter Button -->
@@ -17,9 +13,9 @@
             <i class="fa-solid fa-filter"></i> Filters
         </button>
 
-        <!-- Search Bar -->
-        <div class="relative flex items-center w-full max-w-lg mx-4">
-            <form method="GET" action="{{ route('shop.index') }}" class="flex w-full">
+       <!-- Search Bar -->
+       <div class="relative flex items-center w-full max-w-lg mx-4">
+            <form method="GET" action="" class="flex w-full">
                 <!-- Input Field -->
                 <input 
                     type="text" 
@@ -37,9 +33,9 @@
                 </button>
             </form>
         </div>
-
+        
         <!-- Sort Dropdown -->
-        <form method="GET" action="{{ route('shop.index') }}" class="inline">
+        <form method="GET" action="" class="inline">
             <input type="hidden" name="search" value="{{ request('search') }}">
             <select 
                 name="sort" 
@@ -57,7 +53,7 @@
         <!-- Sidebar Filters -->
         <aside id="filter-sidebar" class="w-full p-4 bg-white rounded-lg shadow-md md:w-1/6">
             <h2 class="pb-2 mb-4 text-xl font-bold border-b">Filters</h2>
-            <form method="GET" action="{{ route('shop.index') }}">
+            <form method="GET" action="">
                 <div class="space-y-4">
                     <!-- Color Filter -->
                     <div>
@@ -141,7 +137,7 @@
             <h2 class="mb-4 text-2xl font-bold">Men's Products</h2>
             <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5">
                 @forelse ($products as $product)
-                <a href="#" class="transition-transform bg-white border border-gray-300 rounded-lg shadow-md hover:shadow-2xl hover:scale-105">
+                <a href="{{ route('product.details', ['id' => $product->id]) }}" class="transition-transform bg-white border border-gray-300 rounded-lg shadow-md hover:shadow-2xl hover:scale-105">
                     <!-- Image Section -->
                     <div class="relative w-full h-56 overflow-hidden rounded-t-lg">
                         <img src="{{ asset('storage/' . $product->images[0]) }}" alt="{{ $product->name }}" class="object-cover w-full h-full transition-transform duration-300 hover:scale-110">
