@@ -48,7 +48,7 @@
                 <div class="relative group" data-aos="zoom-in">
                     <a href="{{ route('product.details', ['id' => $product->id]) }}" class="block">
                         <div class="w-full overflow-hidden bg-gray-200 rounded-md aspect-w-1 aspect-h-1 lg:aspect-none lg:h-80">
-                            <img src="{{ asset('storage/products/' . $product->image) }}" alt="{{ $product->name }}" class="object-cover object-center w-full h-full lg:h-full lg:w-full transition-transform duration-300 group-hover:scale-105">
+                            <img src="{{ asset('storage/' . $product->images[0]) }}" alt="{{ $product->name }}" class="object-cover w-full h-full transition-transform duration-300 hover:scale-110">
                         </div>
                     </a>
                     <div class="flex justify-between items-center mt-4">
@@ -61,9 +61,11 @@
                             </h3>
                             <p class="mt-1 text-sm text-gray-500">Rs {{ number_format($product->price, 2) }}</p>
                         </div>
-                        <button class="p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition">
-                            <i class="fa-solid fa-cart-shopping fa-lg text-red-500"></i>
-                        </button>
+                        <a href="{{ route('product.details', ['id' => $product->id]) }}">
+                            <button class="p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition">
+                                <i class="fa-solid fa-cart-shopping fa-lg text-red-500"></i>
+                            </button>
+                        </a>                        
                     </div>
                 </div>
             @endforeach
