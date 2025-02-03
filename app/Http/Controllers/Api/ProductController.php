@@ -47,6 +47,19 @@ class ProductController extends Controller
         return response()->json($products);
     }
 
+    public function getAccessories()
+    {
+        $products = Product::where('category', 'Accessory')->get()->map(function ($product) {
+            $product->images = array_map(function ($image) {
+                return url('storage/' . $image);
+            }, $product->images);
+           
+            return $product;
+        });
+
+        return response()->json($products);
+    }
+
     public function getProductDetails($id)
     {
         $product = Product::findOrFail($id);

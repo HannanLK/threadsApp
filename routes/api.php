@@ -28,4 +28,5 @@ Route::post('/products', [ProductController::class, 'store']);
 Route::get('/products', [ProductController::class, 'getAllProducts']);
 Route::get('/products/men', [ProductController::class, 'getMenProducts']);
 Route::get('/products/women', [ProductController::class, 'getWomenProducts']);
+Route::get('/products/accessory', [ProductController::class, 'getAccessories']);
 Route::get('/products/{id}', [ProductController::class, 'getProductDetails']);
