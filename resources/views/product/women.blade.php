@@ -1,7 +1,7 @@
 <x-app-layout>
     
     <section class="pt-20 banner">
-        <div class="text-center  bg-[url('assets/image/banner2.png')] bg-cover  h-[140px] items-center justify-center flex">
+        <div class="text-center  bg-[url('assets\image\banner\bannerHome2.png')] bg-cover  h-[140px] items-center justify-center flex">
             <h1 class="text-3xl font-semibold text-white ">Womens Collection</h1>
         </div>    
     </section>
