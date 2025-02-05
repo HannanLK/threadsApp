@@ -129,6 +129,7 @@ class CartController extends Controller
         Stripe::setApiKey(env('STRIPE_SECRET'));
     
         try {
+            // Fetch cart items with product relationship
             $cartItems = Cart::where('user_id', Auth::id())->with('product')->get();
     
             // Filter out cart items that do not have a corresponding product
@@ -136,6 +137,12 @@ class CartController extends Controller
                 return $cartItem->product !== null;
             });
     
+            // If no valid cart items are left, return an error
+            if ($cartItems->isEmpty()) {
+                return response()->json(['error' => 'Your cart contains invalid products. Please update your cart and try again.'], 400);
+            }
+    
+            // Calculate the total price of the cart items
             $productTotal = $cartItems->sum(function ($cartItem) {
                 return $cartItem->quantity * $cartItem->product->price;
             });
@@ -143,6 +150,7 @@ class CartController extends Controller
             $shippingPrice = 100.00; // Fixed shipping price
             $finalTotal = $productTotal + $shippingPrice;
     
+            // Process the Stripe payment
             $charge = Charge::create([
                 'amount' => $finalTotal * 100,
                 'currency' => 'LKR',
